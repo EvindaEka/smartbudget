@@ -1,0 +1,630 @@
+id_pengeluaran,id_user,kategori,jumlah,tanggal
+1,1,Makanan dan Minuman,10000,1/4/2024
+2,1,Makanan dan Minuman,12000,1/4/2024
+3,1,Paket Internet,50000,1/4/2024
+4,1,Kos,500000,1/4/2024
+5,1,Makanan dan Minuman,15000,2/4/2024
+6,1,Transportasi,10000,2/4/2024
+7,1,Makanan dan Minuman,10000,3/4/2024
+8,1,Makanan dan Minuman,11000,3/4/2024
+9,1,Makanan dan Minuman,20000,4/4/2024
+10,1,Lainnya,5000,4/4/2024
+11,1,Makanan dan Minuman,12000,5/4/2024
+12,1,Makanan dan Minuman,15000,6/4/2024
+13,1,Makanan dan Minuman,15000,6/4/2024
+14,1,Makanan dan Minuman,10000,7/4/2024
+15,1,Transportasi,12000,7/4/2024
+16,1,Makanan dan Minuman,15000,8/4/2024
+17,1,Makanan dan Minuman,7000,9/4/2024
+18,1,Makanan dan Minuman,10000,9/4/2024
+19,1,Makanan dan Minuman,10000,10/4/2024
+20,1,Makanan dan Minuman,12000,10/4/2024
+21,1,Makanan dan Minuman,20000,11/4/2024
+22,1,Lainnya,15000,11/4/2024
+23,1,Makanan dan Minuman,12000,12/4/2024
+24,1,Makanan dan Minuman,12000,12/4/2024
+25,1,Makanan dan Minuman,20000,13/4/2024
+26,1,Makanan dan Minuman,15000,14/4/2024
+27,1,Makanan dan Minuman,15000,14/4/2024
+28,1,Makanan dan Minuman,12000,15/4/2024
+29,1,Makanan dan Minuman,20000,16/4/2024
+30,1,Lainnya,10000,16/4/2024
+31,1,Makanan dan Minuman,15000,17/4/2024
+32,1,Lainnya,5000,17/4/2024
+33,1,Makanan dan Minuman,12000,18/4/2024
+34,1,Makanan dan Minuman,8000,18/4/2024
+35,1,Makanan dan Minuman,12000,19/4/2024
+36,1,Lainnya,15000,19/4/2024
+37,1,Makanan dan Minuman,10000,20/4/2024
+38,1,Makanan dan Minuman,12000,20/4/2024
+39,1,Makanan dan Minuman,21000,21/4/2024
+40,1,Transportasi,15000,21/4/2024
+41,1,Makanan dan Minuman,20000,22/4/2024
+42,1,Lainnya,35000,22/4/2024
+43,1,Makanan dan Minuman,11000,23/4/2024
+44,1,Makanan dan Minuman,12000,23/4/2024
+45,1,Makanan dan Minuman,20000,24/4/2024
+46,1,Makanan dan Minuman,20000,25/4/2024
+47,1,Transportasi,10000,25/4/2024
+48,1,Makanan dan Minuman,15000,26/4/2024
+49,1,Makanan dan Minuman,20000,27/4/2024
+50,1,Makanan dan Minuman,20000,28/4/2024
+51,1,Transportasi,10000,28/4/2024
+52,1,Makanan dan Minuman,10000,29/4/2024
+53,1,Makanan dan Minuman,10000,29/4/2024
+54,1,Makanan dan Minuman,20000,30/4/2024
+55,1,Transportasi,10000,30/4/2024
+56,1,Lainnya,5000,30/4/2024
+57,1,Paket Internet,50000,1/5/2024
+58,1,Makanan dan Minuman,20000,1/5/2024
+59,1,Kos,500000,1/5/2024
+60,1,Makanan dan Minuman,25000,2/5/2024
+61,1,Makanan dan Minuman,15000,3/5/2024
+62,1,Makanan dan Minuman,15000,4/5/2024
+63,1,Lainnya,50000,4/5/2024
+64,1,Makanan dan Minuman,20000,5/5/2024
+65,1,Kesehatan,15000,5/5/2024
+66,1,Makanan dan Minuman,12000,6/5/2024
+67,1,Makanan dan Minuman,10000,6/5/2024
+68,1,Makanan dan Minuman,15000,7/5/2024
+69,1,Makanan dan Minuman,12000,8/5/2024
+70,1,Transportasi,5000,8/5/2024
+71,1,Makanan dan Minuman,15000,9/5/2024
+72,1,Makanan dan Minuman,15000,10/5/2024
+73,1,Makanan dan Minuman,10000,10/5/2024
+74,1,Makanan dan Minuman,15000,11/5/2024
+75,1,Transportasi,5000,11/5/2024
+76,1,Makanan dan Minuman,20000,12/5/2024
+77,1,Makanan dan Minuman,15000,13/5/2024
+78,1,Makanan dan Minuman,12000,14/5/2024
+79,1,Lainnya,10000,14/5/2024
+80,1,Makanan dan Minuman,15000,15/5/2024
+81,1,Makanan dan Minuman,20000,16/5/2024
+82,1,Makanan dan Minuman,7000,17/5/2024
+83,1,Makanan dan Minuman,12000,17/5/2024
+84,1,Makanan dan Minuman,20000,18/5/2024
+85,1,Kebutuhan Akademik,24000,19/5/2024
+86,1,Makanan dan Minuman,15000,19/5/2024
+87,1,Makanan dan Minuman,20000,20/5/2024
+88,1,Makanan dan Minuman,15000,21/5/2024
+89,1,Transportasi,10000,21/5/2024
+90,1,Makanan dan Minuman,10000,22/5/2024
+91,1,Makanan dan Minuman,10000,22/5/2024
+92,1,Kebutuhan Akademik,15000,23/5/2024
+93,1,Makanan dan Minuman,18000,23/5/2024
+94,1,Makanan dan Minuman,15000,24/5/2024
+95,1,Transportasi,15000,24/5/2024
+96,1,Makanan dan Minuman,20000,25/5/2024
+97,1,Transportasi,20000,25/5/2024
+98,1,Makanan dan Minuman,12000,26/5/2024
+99,1,Makanan dan Minuman,12000,26/5/2024
+100,1,Makanan dan Minuman,20000,27/5/2024
+101,1,Lainnya,20000,27/5/2024
+102,1,Makanan dan Minuman,15000,28/5/2024
+103,1,Makanan dan Minuman,15000,29/5/2024
+104,1,Makanan dan Minuman,10000,29/5/2024
+105,1,Makanan dan Minuman,15000,30/5/2024
+106,1,Makanan dan Minuman,10000,31/5/2024
+107,1,Makanan dan Minuman,8000,31/5/2024
+108,1,Paket Internet,50000,1/6/2024
+109,1,Makanan dan Minuman,20000,1/6/2024
+110,1,Kos,500000,1/6/2024
+111,1,Makanan dan Minuman,10000,2/6/2024
+112,1,Makanan dan Minuman,8000,2/6/2024
+113,1,Makanan dan Minuman,12000,3/6/2024
+114,1,Makanan dan Minuman,10000,3/6/2024
+115,1,Makanan dan Minuman,20000,4/6/2024
+116,1,Lainnya,10000,4/6/2024
+117,1,Makanan dan Minuman,10000,5/6/2024
+118,1,Makanan dan Minuman,10000,5/6/2024
+119,1,Kebutuhan Akademik,8000,5/6/2024
+120,1,Makanan dan Minuman,25000,6/6/2024
+121,1,Transportasi,10000,6/6/2024
+122,1,Makanan dan Minuman,12000,7/6/2024
+123,1,Lainnya,20000,7/6/2024
+124,1,Makanan dan Minuman,12000,8/6/2024
+125,1,Makanan dan Minuman,15000,9/6/2024
+126,1,Transportasi,20000,9/6/2024
+127,1,Makanan dan Minuman,15000,10/6/2024
+128,1,Makanan dan Minuman,15000,10/6/2024
+129,1,Makanan dan Minuman,20000,11/6/2024
+130,1,Lainnya,10000,11/6/2024
+131,1,Makanan dan Minuman,12000,12/6/2024
+132,1,Transportasi,5000,12/6/2024
+133,1,Makanan dan Minuman,15000,13/6/2024
+134,1,Makanan dan Minuman,10000,13/6/2024
+135,1,Makanan dan Minuman,12000,14/6/2024
+136,1,Makanan dan Minuman,10000,14/6/2024
+137,1,Makanan dan Minuman,22000,15/6/2024
+138,1,Makanan dan Minuman,15000,16/6/2024
+139,1,Makanan dan Minuman,12000,17/6/2024
+140,1,Kebutuhan Akademik,7000,17/6/2024
+141,1,Makanan dan Minuman,12000,18/6/2024
+142,1,Makanan dan Minuman,10000,19/6/2024
+143,1,Makanan dan Minuman,10000,19/6/2024
+144,1,Makanan dan Minuman,20000,20/6/2024
+145,1,Makanan dan Minuman,15000,21/6/2024
+146,1,Makanan dan Minuman,13000,22/6/2024
+147,1,Makanan dan Minuman,12000,22/6/2024
+148,1,Makanan dan Minuman,15000,23/6/2024
+149,1,Lainnya,10000,24/6/2024
+150,1,Makanan dan Minuman,15000,24/6/2024
+151,1,Makanan dan Minuman,10000,25/6/2024
+152,1,Transportasi,5000,25/6/2024
+153,1,Makanan dan Minuman,22000,26/6/2024
+154,1,Makanan dan Minuman,25000,27/6/2024
+155,1,Makanan dan Minuman,22000,28/6/2024
+156,1,Makanan dan Minuman,15000,29/6/2024
+157,1,Lainnya,15000,29/6/2024
+158,1,Makanan dan Minuman,15000,30/6/2024
+159,1,Transportasi,10000,30/6/2024
+160,1,Paket Internet,50000,1/7/2024
+161,1,Makanan dan Minuman,15000,1/7/2024
+162,1,Kos,500000,1/7/2024
+163,1,Makanan dan Minuman,12000,2/7/2024
+164,1,Makanan dan Minuman,10000,2/7/2024
+165,1,Makanan dan Minuman,25000,3/7/2024
+166,1,Transportasi,15000,3/7/2024
+167,1,Makanan dan Minuman,22000,4/7/2024
+168,1,Makanan dan Minuman,15000,5/7/2024
+169,1,Makanan dan Minuman,15000,6/7/2024
+170,1,Makanan dan Minuman,10000,7/7/2024
+171,1,Lainnya,15000,7/7/2024
+172,1,Makanan dan Minuman,10000,8/7/2024
+173,1,Makanan dan Minuman,15000,8/7/2024
+174,1,Makanan dan Minuman,21000,9/7/2024
+175,1,Makanan dan Minuman,20000,10/7/2024
+176,1,Makanan dan Minuman,10000,11/7/2024
+177,1,Lainnya,5000,11/7/2024
+178,1,Lainnya,20000,11/7/2024
+179,1,Makanan dan Minuman,15000,12/7/2024
+180,1,Makanan dan Minuman,12000,13/7/2024
+181,1,Makanan dan Minuman,10000,14/7/2024
+182,1,Transportasi,15000,14/7/2024
+183,1,Makanan dan Minuman,12000,15/7/2024
+184,1,Makanan dan Minuman,10000,16/7/2024
+185,1,Makanan dan Minuman,10000,16/7/2024
+186,1,Makanan dan Minuman,21000,17/7/2024
+187,1,Makanan dan Minuman,18000,18/7/2024
+188,1,Makanan dan Minuman,10000,19/7/2024
+189,1,Lainnya,20000,19/7/2024
+190,1,Makanan dan Minuman,12000,20/7/2024
+191,1,Makanan dan Minuman,20000,20/7/2024
+192,1,Kesehatan,20000,21/7/2024
+193,1,Makanan dan Minuman,10000,21/7/2024
+194,1,Makanan dan Minuman,12000,22/7/2024
+195,1,Lainnya,15000,22/7/2024
+196,1,Makanan dan Minuman,15000,23/7/2024
+197,1,Makanan dan Minuman,12000,24/7/2024
+198,1,Transportasi,20000,24/7/2024
+199,1,Makanan dan Minuman,15000,25/7/2024
+200,1,Transportasi,5000,25/7/2024
+201,1,Makanan dan Minuman,15000,26/7/2024
+202,1,Makanan dan Minuman,20000,27/7/2024
+203,1,Makanan dan Minuman,15000,28/7/2024
+204,1,Makanan dan Minuman,12000,29/7/2024
+205,1,Kebutuhan Akademik,15000,29/7/2024
+206,1,Makanan dan Minuman,15000,30/7/2024
+207,1,Makanan dan Minuman,25000,31/7/2024
+208,1,Kebutuhan Akademik,21000,31/7/2024
+209,1,Makanan dan Minuman,20000,1/8/2024
+210,1,Paket Internet,50000,1/8/2024
+211,1,Kos,500000,1/8/2024
+212,1,Makanan dan Minuman,10000,2/8/2024
+213,1,Makanan dan Minuman,15000,2/8/2024
+214,1,Makanan dan Minuman,25000,3/8/2024
+215,1,Makanan dan Minuman,10000,4/8/2024
+216,1,Transportasi,15000,4/8/2024
+217,1,Makanan dan Minuman,10000,5/8/2024
+218,1,Lainnya,35000,6/8/2024
+219,1,Makanan dan Minuman,10000,6/8/2024
+220,1,Makanan dan Minuman,12000,7/8/2024
+221,1,Transportasi,15000,7/8/2024
+222,1,Makanan dan Minuman,15000,8/8/2024
+223,1,Makanan dan Minuman,20000,9/8/2024
+224,1,Makanan dan Minuman,15000,10/8/2024
+225,1,Makanan dan Minuman,20000,11/8/2024
+226,1,Lainnya,10000,11/8/2024
+227,1,Makanan dan Minuman,22000,12/8/2024
+228,1,Makanan dan Minuman,20000,13/8/2024
+229,1,Makanan dan Minuman,12000,14/8/2024
+230,1,Makanan dan Minuman,15000,15/8/2024
+231,1,Makanan dan Minuman,10000,16/8/2024
+232,1,Transportasi,20000,16/8/2024
+233,1,Makanan dan Minuman,15000,17/8/2024
+234,1,Makanan dan Minuman,20000,18/8/2024
+235,1,Makanan dan Minuman,20000,19/8/2024
+236,1,Makanan dan Minuman,12000,20/8/2024
+237,1,Makanan dan Minuman,15000,21/8/2024
+238,1,Makanan dan Minuman,11000,22/8/2024
+239,1,Makanan dan Minuman,15000,22/8/2024
+240,1,Transportasi,15000,22/8/2024
+241,1,Makanan dan Minuman,12000,23/8/2024
+242,1,Makanan dan Minuman,12000,24/8/2024
+243,1,Transportasi,20000,24/8/2024
+244,1,Makanan dan Minuman,10000,25/8/2024
+245,1,Lainnya,42000,25/8/2024
+246,1,Makanan dan Minuman,12000,26/8/2024
+247,1,Makanan dan Minuman,20000,27/8/2024
+248,1,Makanan dan Minuman,12000,28/8/2024
+249,1,Transportasi,5000,28/8/2024
+250,1,Makanan dan Minuman,20000,29/8/2024
+251,1,Lainnya,5000,29/8/2024
+252,1,Kebutuhan Akademik,5000,29/8/2024
+253,1,Makanan dan Minuman,12000,30/8/2024
+254,1,Makanan dan Minuman,10000,31/8/2024
+255,1,Makanan dan Minuman,10000,31/8/2024
+256,1,Paket Internet,50000,1/9/2024
+257,1,Makanan dan Minuman,20000,1/9/2024
+258,1,Kos,500000,1/9/2024
+259,1,Makanan dan Minuman,10000,2/9/2024
+260,1,Makanan dan Minuman,15000,2/9/2024
+261,1,Kebutuhan Akademik,5000,2/9/2024
+262,1,Makanan dan Minuman,20000,3/9/2024
+263,1,Makanan dan Minuman,20000,4/9/2024
+264,1,Makanan dan Minuman,20000,5/9/2024
+265,1,Makanan dan Minuman,20000,6/9/2024
+266,1,Lainnya,25000,7/9/2024
+267,1,Makanan dan Minuman,12000,7/9/2024
+268,1,Kebutuhan Akademik,17000,7/9/2024
+269,1,Makanan dan Minuman,15000,8/9/2024
+270,1,Makanan dan Minuman,20000,9/9/2024
+271,1,Makanan dan Minuman,15000,10/9/2024
+272,1,Makanan dan Minuman,15000,11/9/2024
+273,1,Lainnya,15000,11/9/2024
+274,1,Makanan dan Minuman,10000,12/9/2024
+275,1,Transportasi,20000,12/9/2024
+276,1,Makanan dan Minuman,12000,13/9/2024
+277,1,Makanan dan Minuman,25000,14/9/2024
+278,1,Makanan dan Minuman,15000,15/9/2024
+279,1,Makanan dan Minuman,20000,16/9/2024
+280,1,Lainnya,20000,16/9/2024
+281,1,Makanan dan Minuman,22000,17/9/2024
+282,1,Makanan dan Minuman,20000,18/9/2024
+283,1,Makanan dan Minuman,15000,19/9/2024
+284,1,Lainnya,20000,19/9/2024
+285,1,Makanan dan Minuman,12000,20/9/2024
+286,1,Makanan dan Minuman,15000,21/9/2024
+287,1,Kebutuhan Akademik,17000,21/9/2024
+288,1,Makanan dan Minuman,10000,22/9/2024
+289,1,Makanan dan Minuman,10000,22/9/2024
+290,1,Makanan dan Minuman,20000,23/9/2024
+291,1,Makanan dan Minuman,10000,24/9/2024
+292,1,Makanan dan Minuman,10000,25/9/2024
+293,1,Makanan dan Minuman,10000,25/9/2024
+294,1,Makanan dan Minuman,20000,26/9/2024
+295,1,Lainnya,20000,26/9/2024
+296,1,Makanan dan Minuman,15000,27/9/2024
+297,1,Lainnya,15000,27/9/2024
+298,1,Makanan dan Minuman,20000,28/9/2024
+299,1,Makanan dan Minuman,15000,28/9/2024
+300,1,Makanan dan Minuman,10000,29/9/2024
+301,1,Makanan dan Minuman,11000,30/9/2024
+302,1,Makanan dan Minuman,10000,30/9/2024
+303,1,Paket Internet,50000,1/10/2024
+304,1,Makanan dan Minuman,17000,1/10/2024
+305,1,Kos,500000,1/10/2024
+306,1,Transportasi,5000,1/10/2024
+307,1,Makanan dan Minuman,20000,2/10/2024
+308,1,Makanan dan Minuman,12000,3/10/2024
+309,1,Makanan dan Minuman,12000,4/10/2024
+310,1,Makanan dan Minuman,5000,4/10/2024
+311,1,Makanan dan Minuman,22000,5/10/2024
+312,1,Makanan dan Minuman,15000,6/10/2024
+313,1,Makanan dan Minuman,22000,7/10/2024
+314,1,Makanan dan Minuman,20000,8/10/2024
+315,1,Makanan dan Minuman,12000,9/10/2024
+316,1,Makanan dan Minuman,10000,10/10/2024
+317,1,Makanan dan Minuman,10000,10/10/2024
+318,1,Makanan dan Minuman,15000,11/10/2024
+319,1,Makanan dan Minuman,20000,12/10/2024
+320,1,Transportasi,5000,12/10/2024
+321,1,Makanan dan Minuman,12000,13/10/2024
+322,1,Lainnya,5000,13/10/2024
+323,1,Makanan dan Minuman,10000,14/10/2024
+324,1,Makanan dan Minuman,15000,14/10/2024
+325,1,Makanan dan Minuman,21000,15/10/2024
+326,1,Kebutuhan Akademik,5000,15/10/2024
+327,1,Makanan dan Minuman,15000,16/10/2024
+328,1,Lainnya,20000,16/10/2024
+329,1,Makanan dan Minuman,21000,17/10/2024
+330,1,Makanan dan Minuman,18000,18/10/2024
+331,1,Kesehatan,10000,19/10/2024
+332,1,Makanan dan Minuman,20000,19/10/2024
+333,1,Makanan dan Minuman,20000,20/10/2024
+334,1,Lainnya,20000,20/10/2024
+335,1,Makanan dan Minuman,20000,21/10/2024
+336,1,Makanan dan Minuman,15000,22/10/2024
+337,1,Transportasi,5000,22/10/2024
+338,1,Makanan dan Minuman,15000,23/10/2024
+339,1,Makanan dan Minuman,12000,24/10/2024
+340,1,Makanan dan Minuman,20000,25/10/2024
+341,1,Lainnya,30000,25/10/2024
+342,1,Makanan dan Minuman,22000,26/10/2024
+343,1,Makanan dan Minuman,15000,27/10/2024
+344,1,Makanan dan Minuman,15000,28/10/2024
+345,1,Makanan dan Minuman,5000,28/10/2024
+346,1,Makanan dan Minuman,12000,29/10/2024
+347,1,Lainnya,20000,29/10/2024
+348,1,Makanan dan Minuman,12000,30/10/2024
+349,1,Makanan dan Minuman,20000,31/10/2024
+350,1,Paket Internet,50000,1/11/2024
+351,1,Makanan dan Minuman,15000,1/11/2024
+352,1,Kos,500000,1/11/2024
+353,1,Transportasi,15000,1/11/2024
+354,1,Makanan dan Minuman,12000,2/11/2024
+355,1,Lainnya,20000,2/11/2024
+356,1,Kebutuhan Akademik,25000,2/11/2024
+357,1,Makanan dan Minuman,15000,3/11/2024
+358,1,Makanan dan Minuman,15000,4/11/2024
+359,1,Lainnya,15000,4/11/2024
+360,1,Makanan dan Minuman,15000,5/11/2024
+361,1,Transportasi,10000,5/11/2024
+362,1,Makanan dan Minuman,15000,6/11/2024
+363,1,Lainnya,10000,6/11/2024
+364,1,Makanan dan Minuman,12000,7/11/2024
+365,1,Makanan dan Minuman,15000,8/11/2024
+366,1,Makanan dan Minuman,15000,9/11/2024
+367,1,Makanan dan Minuman,12000,10/11/2024
+368,1,Lainnya,10000,10/11/2024
+369,1,Makanan dan Minuman,15000,11/11/2024
+370,1,Transportasi,15000,11/11/2024
+371,1,Makanan dan Minuman,20000,12/11/2024
+372,1,Makanan dan Minuman,25000,13/11/2024
+373,1,Makanan dan Minuman,12000,14/11/2024
+374,1,Makanan dan Minuman,12000,15/11/2024
+375,1,Makanan dan Minuman,15000,15/11/2024
+376,1,Makanan dan Minuman,20000,16/11/2024
+377,1,Makanan dan Minuman,15000,17/11/2024
+378,1,Makanan dan Minuman,15000,17/11/2024
+379,1,Makanan dan Minuman,20000,18/11/2024
+380,1,Transportasi,20000,18/11/2024
+381,1,Makanan dan Minuman,20000,19/11/2024
+382,1,Lainnya,10000,19/11/2024
+383,1,Makanan dan Minuman,12000,20/11/2024
+384,1,Makanan dan Minuman,15000,21/11/2024
+385,1,Transportasi,5000,21/11/2024
+386,1,Makanan dan Minuman,20000,22/11/2024
+387,1,Makanan dan Minuman,12000,23/11/2024
+388,1,Kebutuhan Akademik,15000,23/11/2024
+389,1,Makanan dan Minuman,20000,24/11/2024
+390,1,Kebutuhan Akademik,5000,24/11/2024
+391,1,Makanan dan Minuman,20000,25/11/2024
+392,1,Lainnya,15000,25/11/2024
+393,1,Makanan dan Minuman,10000,26/11/2024
+394,1,Makanan dan Minuman,10000,26/11/2024
+395,1,Makanan dan Minuman,10000,27/11/2024
+396,1,Makanan dan Minuman,12000,28/11/2024
+397,1,Makanan dan Minuman,15000,29/11/2024
+398,1,Makanan dan Minuman,12000,30/11/2024
+399,1,Transportasi,10000,30/11/2024
+400,1,Paket Internet,50000,1/12/2024
+401,1,Makanan dan Minuman,20000,1/12/2024
+402,1,Kos,500000,1/12/2024
+403,1,Lainnya,15000,1/12/2024
+404,1,Makanan dan Minuman,15000,2/12/2024
+405,1,Makanan dan Minuman,20000,3/12/2024
+406,1,Lainnya,15000,3/12/2024
+407,1,Makanan dan Minuman,12000,4/12/2024
+408,1,Makanan dan Minuman,22000,5/12/2024
+409,1,Kebutuhan Akademik,5000,5/12/2024
+410,1,Makanan dan Minuman,15000,6/12/2024
+411,1,Makanan dan Minuman,10000,7/12/2024
+412,1,Lainnya,15000,7/12/2024
+413,1,Makanan dan Minuman,20000,8/12/2024
+414,1,Lainnya,20000,8/12/2024
+415,1,Makanan dan Minuman,15000,9/12/2024
+416,1,Makanan dan Minuman,20000,10/12/2024
+417,1,Makanan dan Minuman,12000,11/12/2024
+418,1,Makanan dan Minuman,10000,11/12/2024
+419,1,Makanan dan Minuman,22000,12/12/2024
+420,1,Lainnya,30000,13/12/2024
+421,1,Makanan dan Minuman,15000,13/12/2024
+422,1,Transportasi,15000,13/12/2024
+423,1,Makanan dan Minuman,20000,14/12/2024
+424,1,Makanan dan Minuman,12000,15/12/2024
+425,1,Makanan dan Minuman,20000,16/12/2024
+426,1,Makanan dan Minuman,12000,17/12/2024
+427,1,Makanan dan Minuman,20000,18/12/2024
+428,1,Makanan dan Minuman,20000,19/12/2024
+429,1,Makanan dan Minuman,20000,20/12/2024
+430,1,Lainnya,15000,20/12/2024
+431,1,Makanan dan Minuman,10000,21/12/2024
+432,1,Makanan dan Minuman,15000,22/12/2024
+433,1,Makanan dan Minuman,20000,23/12/2024
+434,1,Lainnya,5000,23/12/2024
+435,1,Makanan dan Minuman,20000,24/12/2024
+436,1,Lainnya,15000,24/12/2024
+437,1,Makanan dan Minuman,10000,25/12/2024
+438,1,Makanan dan Minuman,20000,26/12/2024
+439,1,Makanan dan Minuman,15000,27/12/2024
+440,1,Makanan dan Minuman,20000,28/12/2024
+441,1,Kesehatan,50000,29/12/2024
+442,1,Makanan dan Minuman,12000,29/12/2024
+443,1,Makanan dan Minuman,20000,30/12/2024
+444,1,Makanan dan Minuman,10000,01/01/2025
+445,1,Paket Internet,50000,01/01/2025
+446,1,Kos,500000,01/01/2025
+447,1,Makanan dan Minuman,15000,01/01/2025
+448,1,Makanan dan Minuman,20000,02/01/2025
+449,1,Makanan dan Minuman,20000,03/01/2025
+450,1,Transportasi,10000,03/01/2025
+451,1,Makanan dan Minuman,15000,04/01/2025
+452,1,Makanan dan Minuman,20000,05/01/2025
+453,1,Transportasi,20000,05/01/2025
+454,1,Makanan dan Minuman,10000,06/01/2025
+455,1,Makanan dan Minuman,10000,06/01/2025
+456,1,Makanan dan Minuman,12000,07/01/2025
+457,1,Makanan dan Minuman,15000,08/01/2025
+458,1,Makanan dan Minuman,15000,09/01/2025
+459,1,Makanan dan Minuman,20000,10/1/2025
+460,1,Makanan dan Minuman,12000,11/1/2025
+461,1,Makanan dan Minuman,12000,12/1/2025
+462,1,Transportasi,5000,12/1/2025
+463,1,Makanan dan Minuman,15000,13/1/2025
+464,1,Makanan dan Minuman,20000,14/1/2025
+465,1,Lainnya,70000,14/1/2025
+466,1,Makanan dan Minuman,15000,15/1/2025
+467,1,Makanan dan Minuman,20000,16/1/2025
+468,1,Makanan dan Minuman,20000,17/1/2025
+469,1,Makanan dan Minuman,15000,18/1/2025
+470,1,Lainnya,20000,18/1/2025
+471,1,Makanan dan Minuman,15000,19/1/2025
+472,1,Makanan dan Minuman,22000,20/1/2025
+473,1,Makanan dan Minuman,12000,21/1/2025
+474,1,Makanan dan Minuman,20000,22/1/2025
+475,1,Lainnya,20000,22/1/2025
+476,1,Makanan dan Minuman,20000,23/1/2025
+477,1,Makanan dan Minuman,12000,24/1/2025
+478,1,Makanan dan Minuman,10000,25/1/2025
+479,1,Makanan dan Minuman,5000,25/1/2025
+480,1,Makanan dan Minuman,20000,26/1/2025
+481,1,Lainnya,5000,26/1/2025
+482,1,Makanan dan Minuman,22000,27/1/2025
+483,1,Makanan dan Minuman,12000,28/1/2025
+484,1,Lainnya,15000,28/1/2025
+485,1,Makanan dan Minuman,20000,29/1/2025
+486,1,Kebutuhan Akademik,10000,29/1/2025
+487,1,Makanan dan Minuman,15000,30/1/2025
+488,1,Makanan dan Minuman,20000,31/1/2025
+489,1,Paket Internet,50000,01/02/2025
+490,1,Makanan dan Minuman,20000,01/02/2025
+491,1,Kos,500000,01/02/2025
+492,1,Makanan dan Minuman,20000,02/02/2025
+493,1,Lainnya,45000,03/02/2025
+494,1,Makanan dan Minuman,12000,03/02/2025
+495,1,Kebutuhan Akademik,17000,04/02/2025
+496,1,Makanan dan Minuman,15000,04/02/2025
+497,1,Makanan dan Minuman,10000,05/02/2025
+498,1,Makanan dan Minuman,10000,05/02/2025
+499,1,Makanan dan Minuman,20000,06/02/2025
+500,1,Makanan dan Minuman,23000,07/02/2025
+501,1,Makanan dan Minuman,15000,08/02/2025
+502,1,Makanan dan Minuman,20000,09/02/2025
+503,1,Transportasi,15000,09/02/2025
+504,1,Makanan dan Minuman,15000,10/2/2025
+505,1,Makanan dan Minuman,10000,10/2/2025
+506,1,Makanan dan Minuman,20000,11/2/2025
+507,1,Makanan dan Minuman,22000,12/2/2025
+508,1,Transportasi,20000,12/2/2025
+509,1,Makanan dan Minuman,12000,13/2/2025
+510,1,Lainnya,18000,13/2/2025
+511,1,Makanan dan Minuman,12000,14/2/2025
+512,1,Lainnya,20000,14/2/2025
+513,1,Makanan dan Minuman,25000,15/2/2025
+514,1,Makanan dan Minuman,20000,16/2/2025
+515,1,Makanan dan Minuman,12000,17/2/2025
+516,1,Makanan dan Minuman,15000,17/2/2025
+517,1,Makanan dan Minuman,20000,18/2/2025
+518,1,Makanan dan Minuman,20000,19/2/2025
+519,1,Makanan dan Minuman,12000,20/2/2025
+520,1,Makanan dan Minuman,20000,21/2/2025
+521,1,Lainnya,15000,21/2/2025
+522,1,Makanan dan Minuman,15000,22/2/2025
+523,1,Makanan dan Minuman,15000,23/2/2025
+524,1,Lainnya,15000,23/2/2025
+525,1,Makanan dan Minuman,10000,24/2/2025
+526,1,Makanan dan Minuman,10000,24/2/2025
+527,1,Makanan dan Minuman,15000,25/2/2025
+528,1,Makanan dan Minuman,20000,26/2/2025
+529,1,Makanan dan Minuman,15000,27/2/2025
+530,1,Makanan dan Minuman,22000,28/2/2025
+531,1,Paket Internet,50000,01/03/2025
+532,1,Makanan dan Minuman,10000,01/03/2025
+533,1,Kos,500000,01/03/2025
+534,1,Lainnya,7000,01/03/2025
+535,1,Makanan dan Minuman,25000,02/03/2025
+536,1,Makanan dan Minuman,20000,03/03/2025
+537,1,Makanan dan Minuman,18000,04/03/2025
+538,1,Makanan dan Minuman,22000,05/03/2025
+539,1,Lainnya,15000,05/03/2025
+540,1,Makanan dan Minuman,12000,06/03/2025
+541,1,Makanan dan Minuman,15000,06/03/2025
+542,1,Makanan dan Minuman,15000,07/03/2025
+543,1,Makanan dan Minuman,20000,08/03/2025
+544,1,Makanan dan Minuman,12000,09/03/2025
+545,1,Makanan dan Minuman,18000,10/3/2025
+546,1,Makanan dan Minuman,20000,11/3/2025
+547,1,Makanan dan Minuman,15000,12/3/2025
+548,1,Lainnya,5000,12/3/2025
+549,1,Makanan dan Minuman,15000,13/3/2025
+550,1,Makanan dan Minuman,20000,14/3/2025
+551,1,Lainnya,20000,14/3/2025
+552,1,Kebutuhan Akademik,7000,14/3/2025
+553,1,Makanan dan Minuman,15000,15/3/2025
+554,1,Transportasi,20000,15/3/2025
+555,1,Makanan dan Minuman,10000,16/3/2025
+556,1,Makanan dan Minuman,10000,16/3/2025
+557,1,Makanan dan Minuman,15000,17/3/2025
+558,1,Makanan dan Minuman,12000,18/3/2025
+559,1,Makanan dan Minuman,20000,19/3/2025
+560,1,Makanan dan Minuman,15000,20/3/2025
+561,1,Makanan dan Minuman,10000,21/3/2025
+562,1,Makanan dan Minuman,15000,21/3/2025
+563,1,Makanan dan Minuman,20000,22/3/2025
+564,1,Transportasi,10000,22/3/2025
+565,1,Makanan dan Minuman,20000,23/3/2025
+566,1,Kebutuhan Akademik,10000,23/3/2025
+567,1,Makanan dan Minuman,20000,24/3/2025
+568,1,Makanan dan Minuman,12000,25/3/2025
+569,1,Makanan dan Minuman,16000,26/3/2025
+570,1,Kebutuhan Akademik,10000,26/3/2025
+571,1,Makanan dan Minuman,20000,27/3/2025
+572,1,Makanan dan Minuman,15000,28/3/2025
+573,1,Lainnya,10000,28/3/2025
+574,1,Makanan dan Minuman,20000,29/3/2025
+575,1,Makanan dan Minuman,22000,30/3/2025
+576,1,Makanan dan Minuman,10000,31/3/2025
+577,1,Makanan dan Minuman,10000,31/3/2025
+578,1,Paket Internet,50000,1/4/2025
+579,1,Kos,500000,1/4/2025
+580,1,Makanan dan Minuman,22000,1/4/2025
+581,1,Lainnya,25000,2/4/2025
+582,1,Makanan dan Minuman,10000,2/4/2025
+583,1,Transportasi,15000,2/4/2025
+584,1,Makanan dan Minuman,10000,3/4/2025
+585,1,Makanan dan Minuman,12000,4/4/2025
+586,1,Makanan dan Minuman,10000,4/4/2025
+587,1,Makanan dan Minuman,11000,5/4/2025
+588,1,Lainnya,20000,5/4/2025
+589,1,Makanan dan Minuman,12000,6/4/2025
+590,1,Makanan dan Minuman,21000,7/4/2025
+591,1,Makanan dan Minuman,13000,8/4/2025
+592,1,Makanan dan Minuman,9000,8/4/2025
+593,1,Makanan dan Minuman,12000,9/4/2025
+594,1,Makanan dan Minuman,10000,9/4/2025
+595,1,Kesehatan,50000,10/4/2025
+596,1,Makanan dan Minuman,10000,10/4/2025
+597,1,Makanan dan Minuman,10000,10/4/2025
+598,1,Makanan dan Minuman,21000,11/4/2025
+599,1,Makanan dan Minuman,15000,12/4/2025
+600,1,Lainnya,15000,12/4/2025
+601,1,Makanan dan Minuman,11000,13/4/2025
+602,1,Makanan dan Minuman,10000,14/4/2025
+603,1,Lainnya,25000,14/4/2025
+604,1,Makanan dan Minuman,12000,15/4/2025
+605,1,Transportasi,15000,15/4/2025
+606,1,Makanan dan Minuman,13000,16/4/2025
+607,1,Makanan dan Minuman,12000,17/4/2025
+608,1,Makanan dan Minuman,14000,18/4/2025
+609,1,Makanan dan Minuman,10000,19/4/2025
+610,1,Lainnya,18000,19/4/2025
+611,1,Makanan dan Minuman,12000,20/4/2025
+612,1,Makanan dan Minuman,8000,20/4/2025
+613,1,Makanan dan Minuman,11000,21/4/2025
+614,1,Makanan dan Minuman,10000,22/4/2025
+615,1,Makanan dan Minuman,12000,22/4/2025
+616,1,Makanan dan Minuman,13000,23/4/2025
+617,1,Lainnya,22000,23/4/2025
+618,1,Makanan dan Minuman,12000,24/4/2025
+619,1,Transportasi,10000,24/4/2025
+620,1,Makanan dan Minuman,25000,25/4/2025
+621,1,Makanan dan Minuman,11000,26/4/2025
+622,1,Makanan dan Minuman,10000,26/4/2025
+623,1,Kebutuhan Akademik,5000,26/4/2025
+624,1,Makanan dan Minuman,22000,27/4/2025
+625,1,Makanan dan Minuman,10000,28/4/2025
+626,1,Lainnya,17000,28/4/2025
+627,1,Makanan dan Minuman,12000,29/4/2025
+628,1,Transportasi,8000,29/4/2025
+629,1,Makanan dan Minuman,18000,30/4/2025

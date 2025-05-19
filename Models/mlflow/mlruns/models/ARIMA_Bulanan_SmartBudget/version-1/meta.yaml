@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1747586367096
+current_stage: None
+description: ''
+last_updated_timestamp: 1747586367096
+name: ARIMA_Bulanan_SmartBudget
+run_id: e9766f8ab4de4078aa91fbd702a89266
+run_link: ''
+source: mlflow-artifacts:/253061024377453697/e9766f8ab4de4078aa91fbd702a89266/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/253061024377453697/e9766f8ab4de4078aa91fbd702a89266/artifacts/model
+user_id: null
+version: 1
