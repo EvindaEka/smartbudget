@@ -1,16 +1,19 @@
 from fastapi import FastAPI
 from app.database import Base, engine
-from app.routers import auth
-from app.models.pemasukan import Pemasukan  # import semua modelmu
+from app.routers import auth, pemasukan
+from app.models import user, pemasukan as pemasukan_model
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
-
+app = FastAPI(
+    title="SmartBudget API",
+    version="1.0.0",
+    description="API untuk pencatatan dan prediksi keuangan mahasiswa"
+)
 
 app.include_router(auth.router)
+app.include_router(pemasukan.router)
 
-# Tambahkan endpoint dasar agar bisa dicek
 @app.get("/")
 def read_root():
     return {"message": "SmartBudget API is running!"}
