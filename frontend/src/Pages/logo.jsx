@@ -16,8 +16,8 @@ export default function LoginPage({ onLogin }) {
       <div className="flex w-[900px] h-[500px] overflow-hidden bg-[#38b6ff]">
         
         {/* Kiri - Logo */}
-        <div className="w-1/2 !bg-[#38b6ff] flex items-center justify-center border-none shadow-none">
-          <img src={Logo} alt="Smart Budget Logo" className="w-80 h-auto" />
+        <div className="w-1/2 bg-[#38b6ff] flex items-center justify-start pl-3 border-none shadow-none">
+          <img src={Logo} alt="Smart Budget Logo" className="w-200 h-auto ml-[-40px]" />
         </div>
 
         {/* Kanan - Form */}

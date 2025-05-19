@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import IconPengeluaran from "../assets/Pengeluaran icon inputan.png";
 
 // Import icon navigasi bawah
-import InputanPengeluaran from "../assets/Pengeluaran icon inputan.png";
-import InputanPemasukan from "../assets/ikon pemasukan.png";
-import BerandaIcon from "../assets/Beranda.png";
-import AnalisisIcon from "../assets/Analisis.png";
-import bintang from "../assets/bintangbintang.svg";
+import InputanPengeluaran from "../assets/pengeluaraninput.png";
+import InputanPemasukan from "../assets/pemasukaninput.png";
+import BerandaIcon from "../assets/beranda.png";
+import AnalisisIcon from "../assets/dashboard.png";
+import koin from "../assets/koin.png";
 
 export default function InputPengeluaran({ onAddTransaction }) {
   const navigate = useNavigate();
+  const currentPath = location.pathname;
   const [formData, setFormData] = useState({
     category: "",
     amount: "",
@@ -18,20 +19,16 @@ export default function InputPengeluaran({ onAddTransaction }) {
   });
 
   const formatNumber = (value) => {
-    if (!value) return "";
     const numberString = value.replace(/\D/g, "");
-    if (!numberString) return "";
-    return Number(numberString).toLocaleString("id-ID");
+    return numberString ? Number(numberString).toLocaleString("id-ID") : "";
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === "amount") {
-      const formattedValue = formatNumber(value);
-      setFormData((prev) => ({ ...prev, [name]: formattedValue }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === "amount" ? formatNumber(value) : value,
+    }));
   };
 
   const handleAddTransaction = () => {
@@ -60,32 +57,29 @@ export default function InputPengeluaran({ onAddTransaction }) {
     if (onAddTransaction) {
       onAddTransaction(newTransaction);
     }
+
     alert("Pengeluaran berhasil disimpan!");
     navigate("/beranda");
   };
 
-  const goToBeranda = () => navigate("/beranda");
-  const goToPemasukan = () => navigate("/pemasukan");
-  const goToAnalisis = () => navigate("/analisis");
-
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#01204E] via-[#028391] to-[#A7DCFF] p-6 overflow-hidden">
-      {/* Background bintang */}
+    <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-[FFFFFF] p-6 overflow-hidden">
+      {/* Background koin */}
       <img
-        src={bintang}
-        alt="bintang-bintang"
+        src={koin}
+        alt="uang background"
         className="absolute top-0 left-0 w-full h-full object-cover opacity-30 animate-bintang z-0"
       />
 
       {/* Card Input */}
-      <div className="relative w-full max-w-md bg-white rounded-xl p-6 shadow-md z-10">
+      <div className="relative w-full max-w-lg bg-white rounded-xl p-8 shadow-md z-10 mb-20">
         <h2 className="text-2xl font-bold mb-6 text-center">Input Pengeluaran</h2>
 
         <select
           name="category"
           value={formData.category}
           onChange={handleInputChange}
-          className="w-full mb-4 p-2 border rounded"
+          className="w-full mb-5 p-4 border rounded text-lg"
         >
           <option value="" disabled>
             Pilih Kategori Pengeluaran
@@ -104,53 +98,77 @@ export default function InputPengeluaran({ onAddTransaction }) {
           placeholder="Jumlah Pengeluaran"
           value={formData.amount}
           onChange={handleInputChange}
-          className="w-full mb-4 p-2 border rounded"
+          className="w-full mb-5 p-4 border rounded text-lg"
           inputMode="numeric"
         />
 
-        <label className="block mb-2 font-semibold text-gray-700">Tanggal</label>
+        <label className="block mb-2 font-semibold text-gray-700 text-lg">Tanggal</label>
         <input
           type="date"
           name="date"
           value={formData.date}
           onChange={handleInputChange}
-          className="w-full mb-6 p-2 border rounded"
+          className="w-full mb-6 p-4 border rounded text-lg"
           max={new Date().toISOString().slice(0, 10)}
         />
 
         <button
           onClick={handleAddTransaction}
-          className="w-full py-2 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
+          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
         >
           Simpan
         </button>
       </div>
 
-      {/* Navigasi bawah */}
-      <div className="fixed bottom-0 left-0 right-0 bg-[#92D5FF] flex justify-around items-center py-3 rounded-t-3xl shadow-md z-20">
-        <img
-          src={BerandaIcon}
-          alt="Beranda"
-          className="w-10 h-10 cursor-pointer"
-          onClick={goToBeranda}
-        />
-        <img
-          src={InputanPemasukan}
-          alt="Input Pemasukan"
-          className="w-15 h-15 cursor-pointer"
-          onClick={goToPemasukan}
-        />
-        <img
-          src={InputanPengeluaran}
-          alt="Input Pengeluaran"
-          className="w-12 h-12 cursor-pointer opacity-50"
-        />
-        <img
-          src={AnalisisIcon}
-          alt="Analisis"
-          className="w-12 h-12 cursor-pointer"
-          onClick={goToAnalisis}
-        />
+      {/* Navigasi bawah dengan teks */}
+      <div className="fixed bottom-0 left-0 right-0 bg-[#92D5FF] flex justify-around items-center py-3 rounded-t-3xl shadow-md z-20 text-[10px] sm:text-xs text-center">
+        <div className="flex flex-col items-center">
+          <img
+            src={BerandaIcon}
+            alt="Beranda"
+            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
+              currentPath === "/beranda" ? "opacity-50 filter grayscale" : ""
+            }`}
+            onClick={() => navigate("/beranda")}
+          />
+          <span className="mt-1">Beranda</span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <img
+            src={InputanPemasukan}
+            alt="Pemasukan"
+            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
+              currentPath === "/pemasukan" ? "opacity-50 filter grayscale" : ""
+            }`}
+            onClick={() => navigate("/pemasukan")}
+          />
+          <span className="mt-1">Pemasukan</span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <img
+            src={InputanPengeluaran}
+            alt="Pengeluaran"
+            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
+              currentPath === "/pengeluaran" ? "opacity-50 filter grayscale" : ""
+            }`}
+            onClick={() => navigate("/pengeluaran")}
+          />
+          <span className="mt-1">Pengeluaran</span>
+        </div>
+
+        <div className="flex flex-col items-center">
+          <img
+            src={AnalisisIcon}
+            alt="Analisis"
+            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
+              currentPath === "/analisis" ? "opacity-50 filter grayscale" : ""
+            }`}
+            onClick={() => navigate("/analisis")}
+          />
+          <span className="mt-1">Analisis</span>
+        </div>
       </div>
     </div>
   );
