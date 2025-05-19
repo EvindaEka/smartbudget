@@ -14,11 +14,11 @@ export default function Intro() {
   }, [navigate]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#01204E] via-[#028391] to-[#A7DCFF]">
+    <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-[FFFFFF] p-6 overflow-hidden">
       <img
         src={introImage}
         alt="Smart Budget Intro"
-        className="w-full max-w-sm animate-fade-in"
+        className="w-full max-w-xl animate-fade-in"
       />
     </div>
   );
