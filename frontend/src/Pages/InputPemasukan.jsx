@@ -34,9 +34,8 @@ export default function InputPemasukan({ onAddTransaction }) {
 
   const handleSave = () => {
     const { category, amount, date } = formData;
-    const numericAmount = parseInt(amount.replace(/\./g, "")); 
+    const numericAmount = parseInt(amount.replace(/\./g, ""));
 
-    // Validate inputs
     if (!category || !amount || !date || isNaN(numericAmount) || numericAmount <= 0) {
       toast.error("Semua field harus diisi dengan benar dan jumlah harus lebih besar dari 0.");
       return;
@@ -66,22 +65,20 @@ export default function InputPemasukan({ onAddTransaction }) {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-[FFFFFF] p-6 overflow-hidden">
-      {/* Background koin */}
       <img
         src={koin}
         alt="koin-koin"
         className="absolute top-0 left-0 w-full h-full object-cover opacity-30 animate-bintang z-0"
       />
 
-      {/* Card Input */}
-      <div className="relative w-full max-w-2xl bg-white rounded-xl p-8 shadow-md z-10 mb-20">
+      <div className="relative w-full max-w-xl bg-white rounded-xl p-6 shadow-md z-10 mb-20">
         <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Input Pemasukan</h2>
 
         <select
           name="category"
           value={formData.category}
           onChange={handleInputChange}
-          className="w-full mb-5 p-4 border rounded text-lg"
+          className="w-full mb-4 p-2 border rounded text-lg"
         >
           <option value="" disabled>
             Pilih Kategori Pemasukan
@@ -108,7 +105,7 @@ export default function InputPemasukan({ onAddTransaction }) {
           name="date"
           value={formData.date}
           onChange={handleInputChange}
-          className="w-full mb-6 p-4 border rounded text-lg"
+          className="w-full mb-4 p-2 border rounded text-lg"
           max={new Date().toISOString().slice(0, 10)}
         />
 
@@ -120,15 +117,12 @@ export default function InputPemasukan({ onAddTransaction }) {
         </button>
       </div>
 
-      {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-[#92D5FF] flex justify-around items-center py-3 rounded-t-3xl shadow-md z-20 text-[10px] sm:text-xs text-center">
         <div className="flex flex-col items-center">
           <img
             src={BerandaIcon}
             alt="Beranda"
-            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
-              currentPath === "/beranda" ? "opacity-50 filter grayscale" : ""
-            }`}
+            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${currentPath === "/beranda" ? "opacity-50 filter grayscale" : ""}`}
             onClick={() => navigate("/beranda")}
           />
           <span className="mt-1">Beranda</span>
@@ -138,9 +132,7 @@ export default function InputPemasukan({ onAddTransaction }) {
           <img
             src={IconPemasukan}
             alt="Pemasukan"
-            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
-              currentPath === "/pemasukan" ? "opacity-50 filter grayscale" : ""
-            }`}
+            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${currentPath === "/pemasukan" ? "opacity-50 filter grayscale" : ""}`}
           />
           <span className="mt-1">Pemasukan</span>
         </div>
@@ -149,9 +141,7 @@ export default function InputPemasukan({ onAddTransaction }) {
           <img
             src={InputanPengeluaran}
             alt="Pengeluaran"
-            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
-              currentPath === "/pengeluaran" ? "opacity-50 filter grayscale" : ""
-            }`}
+            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${currentPath === "/pengeluaran" ? "opacity-50 filter grayscale" : ""}`}
             onClick={() => navigate("/pengeluaran")}
           />
           <span className="mt-1">Pengeluaran</span>
@@ -161,9 +151,7 @@ export default function InputPemasukan({ onAddTransaction }) {
           <img
             src={AnalisisIcon}
             alt="Analisis"
-            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
-              currentPath === "/analisis" ? "opacity-50 filter grayscale" : ""
-            }`}
+            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${currentPath === "/analisis" ? "opacity-50 filter grayscale" : ""}`}
             onClick={() => navigate("/analisis")}
           />
           <span className="mt-1">Analisis</span>

@@ -72,14 +72,14 @@ export default function InputPengeluaran({ onAddTransaction }) {
       />
 
       {/* Card Input */}
-      <div className="relative w-full max-w-lg bg-white rounded-xl p-8 shadow-md z-10 mb-20">
-        <h2 className="text-2xl font-bold mb-6 text-center">Input Pengeluaran</h2>
+      <div className="relative w-full max-w-xl bg-white rounded-xl p-5 shadow-md z-10 mb-20">
+        <h2 className="text-2xl font-bold mb-6 text-center">Pengeluaran</h2>
 
         <select
           name="category"
           value={formData.category}
           onChange={handleInputChange}
-          className="w-full mb-5 p-4 border rounded text-lg"
+          className="w-full mb-4 p-2 border rounded text-lg"
         >
           <option value="" disabled>
             Pilih Kategori Pengeluaran
@@ -98,7 +98,7 @@ export default function InputPengeluaran({ onAddTransaction }) {
           placeholder="Jumlah Pengeluaran"
           value={formData.amount}
           onChange={handleInputChange}
-          className="w-full mb-5 p-4 border rounded text-lg"
+          className="w-full mb-4 p-2 border rounded text-lg"
           inputMode="numeric"
         />
 
@@ -108,7 +108,7 @@ export default function InputPengeluaran({ onAddTransaction }) {
           name="date"
           value={formData.date}
           onChange={handleInputChange}
-          className="w-full mb-6 p-4 border rounded text-lg"
+          className="w-full mb-4 p-2 border rounded text-lg"
           max={new Date().toISOString().slice(0, 10)}
         />
 

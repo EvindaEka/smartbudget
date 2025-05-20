@@ -8,6 +8,7 @@ import Beranda from './Pages/beranda';
 import InputPemasukan from './Pages/InputPemasukan';
 import InputPengeluaran from './Pages/InputPengeluaran';
 import Setting from './Pages/Setting';
+import Analisis from './Pages/Analisis';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -46,6 +47,10 @@ function App() {
         <Route
           path="/setting"
           element={isLoggedIn ? <Setting /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/analisis"
+          element={isLoggedIn ? <Analisis /> : <Navigate to="/login" replace />}
         />
       </Routes>
     </Router>

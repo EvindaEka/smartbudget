@@ -9,10 +9,10 @@ const Setting = () => {
   return (
     <div className="min-h-screen bg-[#92D5FF] text-black font-sans px-4 py-6 relative">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="sticky top-0 z-30 bg-[#92D5FF] flex justify-between items-center py-4 mb-6">
         <div className="flex items-center gap-2">
           <img src={ProfilIcon} alt="Profil" className="w-8 h-8 rounded-full object-cover" />
-          <div className="bg-[#C5F1FF] px-4 py-1 rounded-xl text-sm font-bold">
+          <div className="bg-[#C5F1FF] px-4 py-1 rounded-xbg-[#C5F1FF] px-4 py-1 rounded-full text-3xl font-bold text-blackl text-sm font-bold">
             Hai, Sahabat Smart
           </div>
         </div>

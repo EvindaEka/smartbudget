@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 // Asset imports
 import Setting from "../assets/Setting.png";
-import RpIcon from "../assets/Koin.png";
+import RpIcon from "../assets/Koin1.png";
 import PengeluaranIcon from "../assets/Pengeluaran icon.png";
 import PemasukanIcon from "../assets/Pemasukan Icon.png";
 import InputanPengeluaran from "../assets/pengeluaraninput.png";
@@ -30,8 +30,8 @@ const Beranda = () => {
       {/* Header */}
       <div className="flex justify-between items-center px-6 pt-6 pb-4 w-full">
         <div className="flex items-center gap-2">
-          <img src={ProfilIcon} alt="Profil" className="w-8 h-8 rounded-full object-cover" />
-          <div className="bg-[#C5F1FF] px-4 py-1 rounded-xl text-sm font-bold text-black">
+          <img src={ProfilIcon} alt="Profil" className="w-10 h-10 rounded-full object-cover" />
+          <div className="bg-[#C5F1FF] px-4 py-1 rounded-xl text-l font-bold text-black">
             Hai, Sahabat Smart
           </div>
         </div>
