@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/724708372391493849/12ea755030ab40d38d9f98fd488a94ce/artifacts
+end_time: 1747659252212
+entry_point_name: ''
+experiment_id: '724708372391493849'
+lifecycle_stage: active
+run_id: 12ea755030ab40d38d9f98fd488a94ce
+run_name: overjoyed-chimp-352
+run_uuid: 12ea755030ab40d38d9f98fd488a94ce
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747659251796
+status: 3
+tags: []
+user_id: LENOVO

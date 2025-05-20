@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/724708372391493849/68af680899e544e2a244513ed85481e3/artifacts
+end_time: 1747659271211
+entry_point_name: ''
+experiment_id: '724708372391493849'
+lifecycle_stage: active
+run_id: 68af680899e544e2a244513ed85481e3
+run_name: clumsy-bat-288
+run_uuid: 68af680899e544e2a244513ed85481e3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747659270757
+status: 3
+tags: []
+user_id: LENOVO

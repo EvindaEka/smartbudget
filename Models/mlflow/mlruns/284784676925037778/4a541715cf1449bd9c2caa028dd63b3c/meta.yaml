@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/284784676925037778/4a541715cf1449bd9c2caa028dd63b3c/artifacts
+end_time: 1747654670211
+entry_point_name: ''
+experiment_id: '284784676925037778'
+lifecycle_stage: active
+run_id: 4a541715cf1449bd9c2caa028dd63b3c
+run_name: hilarious-koi-891
+run_uuid: 4a541715cf1449bd9c2caa028dd63b3c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747654659944
+status: 3
+tags: []
+user_id: LENOVO

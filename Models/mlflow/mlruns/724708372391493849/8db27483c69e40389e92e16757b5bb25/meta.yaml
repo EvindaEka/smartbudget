@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/724708372391493849/8db27483c69e40389e92e16757b5bb25/artifacts
+end_time: 1747659266102
+entry_point_name: ''
+experiment_id: '724708372391493849'
+lifecycle_stage: active
+run_id: 8db27483c69e40389e92e16757b5bb25
+run_name: kindly-grub-629
+run_uuid: 8db27483c69e40389e92e16757b5bb25
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747659265713
+status: 3
+tags: []
+user_id: LENOVO

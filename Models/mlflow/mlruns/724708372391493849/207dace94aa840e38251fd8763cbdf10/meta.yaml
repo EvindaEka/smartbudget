@@ -1,0 +1,16 @@
+artifact_uri: mlflow-artifacts:/724708372391493849/207dace94aa840e38251fd8763cbdf10/artifacts
+deleted_time: 1747659208266
+end_time: 1747654627579
+entry_point_name: ''
+experiment_id: '724708372391493849'
+lifecycle_stage: deleted
+run_id: 207dace94aa840e38251fd8763cbdf10
+run_name: burly-wolf-313
+run_uuid: 207dace94aa840e38251fd8763cbdf10
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747654614201
+status: 3
+tags: []
+user_id: LENOVO

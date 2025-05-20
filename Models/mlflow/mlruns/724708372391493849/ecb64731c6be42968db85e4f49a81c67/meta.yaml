@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/724708372391493849/ecb64731c6be42968db85e4f49a81c67/artifacts
+end_time: 1747659272517
+entry_point_name: ''
+experiment_id: '724708372391493849'
+lifecycle_stage: active
+run_id: ecb64731c6be42968db85e4f49a81c67
+run_name: nebulous-quail-354
+run_uuid: ecb64731c6be42968db85e4f49a81c67
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747659272157
+status: 3
+tags: []
+user_id: LENOVO

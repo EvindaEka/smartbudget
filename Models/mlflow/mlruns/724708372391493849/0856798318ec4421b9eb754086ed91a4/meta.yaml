@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/724708372391493849/0856798318ec4421b9eb754086ed91a4/artifacts
+end_time: 1747659253430
+entry_point_name: ''
+experiment_id: '724708372391493849'
+lifecycle_stage: active
+run_id: 0856798318ec4421b9eb754086ed91a4
+run_name: chill-newt-887
+run_uuid: 0856798318ec4421b9eb754086ed91a4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747659252927
+status: 3
+tags: []
+user_id: LENOVO

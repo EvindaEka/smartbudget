@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1747659265437
+current_stage: None
+description: ''
+last_updated_timestamp: 1747659265437
+name: ARIMA_Bulanan_SmartBudget
+run_id: 05df6d68524243988818c4031c942700
+run_link: ''
+source: mlflow-artifacts:/724708372391493849/05df6d68524243988818c4031c942700/artifacts/model_pyfunc
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/724708372391493849/05df6d68524243988818c4031c942700/artifacts/model_pyfunc
+user_id: null
+version: 4

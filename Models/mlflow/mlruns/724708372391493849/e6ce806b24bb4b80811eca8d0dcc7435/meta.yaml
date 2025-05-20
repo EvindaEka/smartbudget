@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/724708372391493849/e6ce806b24bb4b80811eca8d0dcc7435/artifacts
+end_time: 1747659249205
+entry_point_name: ''
+experiment_id: '724708372391493849'
+lifecycle_stage: active
+run_id: e6ce806b24bb4b80811eca8d0dcc7435
+run_name: bright-steed-193
+run_uuid: e6ce806b24bb4b80811eca8d0dcc7435
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747659248793
+status: 3
+tags: []
+user_id: LENOVO

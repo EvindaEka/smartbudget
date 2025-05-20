@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/724708372391493849/0e35f3fe20aa42d8b069200dff69436c/artifacts
+end_time: 1747659251603
+entry_point_name: ''
+experiment_id: '724708372391493849'
+lifecycle_stage: active
+run_id: 0e35f3fe20aa42d8b069200dff69436c
+run_name: salty-elk-252
+run_uuid: 0e35f3fe20aa42d8b069200dff69436c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747659250709
+status: 3
+tags: []
+user_id: LENOVO

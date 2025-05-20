@@ -1,0 +1,22 @@
+artifact_path: model
+flavors:
+  python_function:
+    artifacts:
+      model_file:
+        path: artifacts\arima_bulanan_model.pkl
+        uri: arima_bulanan_model.pkl
+    cloudpickle_version: 3.0.0
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.5
+    streamable: false
+mlflow_version: 2.21.3
+model_size_bytes: 85706
+model_uuid: e1c943fc04dc408cbddaee69edaee5cf
+prompts: null
+run_id: 207dace94aa840e38251fd8763cbdf10
+utc_time_created: '2025-05-19 11:36:54.515120'

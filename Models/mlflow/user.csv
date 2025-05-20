@@ -1,0 +1,6 @@
+id_user,nama,email,password,jurusan,universitas,saldo
+1,Ahmad,ahmad@example.com,pass123,Informatika,UI,0
+2,Budi,budi@example.com,pass123,Ekonomi,UGM,0
+3,Citra,citra@example.com,pass123,Kedokteran,UNAIR,0
+4,Dewi,dewi@example.com,pass123,Teknik Sipil,ITB,0
+5,Eko,eko@example.com,pass123,Manajemen,UNDIP,0

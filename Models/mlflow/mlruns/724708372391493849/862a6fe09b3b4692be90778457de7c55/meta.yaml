@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/724708372391493849/862a6fe09b3b4692be90778457de7c55/artifacts
+end_time: 1747659249888
+entry_point_name: ''
+experiment_id: '724708372391493849'
+lifecycle_stage: active
+run_id: 862a6fe09b3b4692be90778457de7c55
+run_name: spiffy-whale-594
+run_uuid: 862a6fe09b3b4692be90778457de7c55
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1747659249429
+status: 3
+tags: []
+user_id: LENOVO
