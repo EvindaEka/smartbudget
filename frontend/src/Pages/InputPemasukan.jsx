@@ -111,7 +111,7 @@ export default function InputPemasukan({ onAddTransaction }) {
 
         <button
           onClick={handleSave}
-          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300"
+          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
         >
           Simpan
         </button>
