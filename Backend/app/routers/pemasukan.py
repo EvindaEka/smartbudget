@@ -9,7 +9,6 @@ from app.models.user import User
 
 router = APIRouter(prefix="/pemasukan", tags=["pemasukan"])
 
-# Dependency untuk mendapatkan session database
 def get_db():
     db = SessionLocal()
     try:
@@ -20,21 +19,29 @@ def get_db():
 @router.post("/", response_model=PemasukanOut)
 def create_pemasukan(data: PemasukanCreate, db: Session = Depends(get_db)):
 
-    id_user = data.id_user if data.id_user is not None else 1
+    if data.id_user is None:
+        raise HTTPException(status_code=400, detail="id_user tidak boleh kosong")
 
-    user = db.query(User).filter(User.id_user == id_user).first()
+    user = db.query(User).filter(User.id_user == data.id_user).first()
     if not user:
         raise HTTPException(status_code=404, detail="User tidak ditemukan")
 
+    if data.jumlah <= 0:
+        raise HTTPException(status_code=400, detail="Jumlah pemasukan harus lebih besar dari 0")
+
     pemasukan = Pemasukan(
-        id_user=id_user,
+        id_user=data.id_user,
         sumber=data.sumber,
         jumlah=data.jumlah,
         tanggal=data.tanggal
     )
     db.add(pemasukan)
+
+    # Update saldo pengguna
+    user.saldo += data.jumlah
     db.commit()
     db.refresh(pemasukan)
+    
     return pemasukan
 
 

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr, validator
+from pydantic import BaseModel, EmailStr, field_validator
 import re
 
 class UserCreate(BaseModel):
@@ -8,7 +8,7 @@ class UserCreate(BaseModel):
     jurusan: str
     universitas: str
 
-    @validator("password")
+    @field_validator("password")
     def password_must_have_letters_and_numbers(cls, v):
         if len(v) < 8:
             raise ValueError("Password must be at least 8 characters long")

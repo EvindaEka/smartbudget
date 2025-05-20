@@ -16,4 +16,4 @@ app.include_router(pemasukan.router)
 
 @app.get("/")
 def read_root():
-    return {"message": "SmartBudget API is running!"}
+    return {"message": "Welcome to the SmartBudget!!"}
