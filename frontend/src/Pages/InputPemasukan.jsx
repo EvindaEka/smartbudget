@@ -5,6 +5,8 @@ import BerandaIcon from "../assets/beranda.png";
 import InputanPengeluaran from "../assets/pengeluaraninput.png";
 import AnalisisIcon from "../assets/dashboard.png";
 import koin from "../assets/koin.png";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function InputPemasukan({ onAddTransaction }) {
   const navigate = useNavigate();
@@ -32,10 +34,11 @@ export default function InputPemasukan({ onAddTransaction }) {
 
   const handleSave = () => {
     const { category, amount, date } = formData;
-    const numericAmount = parseInt(amount.replace(/\./g, ""));
+    const numericAmount = parseInt(amount.replace(/\./g, "")); 
 
-    if (!category || !amount || !date || isNaN(numericAmount)) {
-      alert("Semua field harus diisi dengan benar.");
+    // Validate inputs
+    if (!category || !amount || !date || isNaN(numericAmount) || numericAmount <= 0) {
+      toast.error("Semua field harus diisi dengan benar dan jumlah harus lebih besar dari 0.");
       return;
     }
 
@@ -57,7 +60,7 @@ export default function InputPemasukan({ onAddTransaction }) {
       onAddTransaction(newTransaction);
     }
 
-    alert("Pemasukan berhasil disimpan!");
+    toast.success("Pemasukan berhasil disimpan!");
     navigate("/beranda");
   };
 
@@ -71,8 +74,8 @@ export default function InputPemasukan({ onAddTransaction }) {
       />
 
       {/* Card Input */}
-      <div className="relative w-full max-w-lg bg-white rounded-xl p-8 shadow-md z-10 mb-20">
-        <h2 className="text-2xl font-bold mb-6 text-center">Input Pemasukan</h2>
+      <div className="relative w-full max-w-2xl bg-white rounded-xl p-8 shadow-md z-10 mb-20">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Input Pemasukan</h2>
 
         <select
           name="category"
@@ -95,7 +98,7 @@ export default function InputPemasukan({ onAddTransaction }) {
           placeholder="Jumlah Saldo"
           value={formData.amount}
           onChange={handleInputChange}
-          className="w-full mb-5 p-4 border rounded text-lg"
+          className={`w-full mb-5 p-4 border rounded text-lg ${!formData.amount ? 'border-red-500' : ''}`}
           inputMode="numeric"
         />
 
@@ -111,13 +114,13 @@ export default function InputPemasukan({ onAddTransaction }) {
 
         <button
           onClick={handleSave}
-          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
+          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300"
         >
           Simpan
         </button>
       </div>
 
-      {/* Navigasi bawah dengan teks */}
+      {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-[#92D5FF] flex justify-around items-center py-3 rounded-t-3xl shadow-md z-20 text-[10px] sm:text-xs text-center">
         <div className="flex flex-col items-center">
           <img
