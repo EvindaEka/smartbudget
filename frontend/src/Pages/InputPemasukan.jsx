@@ -71,7 +71,7 @@ export default function InputPemasukan({ onAddTransaction }) {
       />
 
       {/* Card Input */}
-      <div className="relative w-full max-w-lg bg-white rounded-xl p-8 shadow-md z-10 mb-20">
+      <div className="relative w-full max-w-2xl bg-white rounded-xl p-8 shadow-md z-10 mb-20">
         <h2 className="text-2xl font-bold mb-6 text-center">Input Pemasukan</h2>
 
         <select
