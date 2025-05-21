@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.database import Base, engine
-from app.routers import auth, pemasukan
-from app.models import user, pemasukan as pemasukan_model
+from app.routers import auth, pemasukan, user, pengeluaran
+from app.models import pemasukan as pemasukan_model
 
 Base.metadata.create_all(bind=engine)
 
@@ -13,6 +13,8 @@ app = FastAPI(
 
 app.include_router(auth.router)
 app.include_router(pemasukan.router)
+app.include_router(pengeluaran.router)
+app.include_router(user.router)
 
 @app.get("/")
 def read_root():

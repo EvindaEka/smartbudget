@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 from datetime import date
-from typing import Optional
 
 class PemasukanBase(BaseModel):
     sumber: str
@@ -8,7 +7,7 @@ class PemasukanBase(BaseModel):
     tanggal: date
 
 class PemasukanCreate(PemasukanBase):
-    id_user: Optional[int] = None
+    pass
 
 class PemasukanOut(PemasukanBase):
     id: int
