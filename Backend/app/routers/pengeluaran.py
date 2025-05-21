@@ -141,3 +141,4 @@ def get_pengeluaran_terbaru_periode(
         raise HTTPException(status_code=400, detail="Tipe tidak valid")
 
     return results
+
