@@ -27,13 +27,13 @@ export default function LoginPage({ onLogin }) {
         {/* Kanan - Form Login */}
         <div className="w-[400px] h-[450px] bg-[#e4f3ff] rounded-xl px-6 py-6 flex flex-col items-center justify-start shadow-lg">
           <div className="w-full mt-4">
-            <h1 className="text-3xl font-bold text-[#1c1e4e] mb-1 text-center">Login</h1>
-            <p className="text-center mb-4 text-sm text-[#444]">Login to continue</p>
+            <h1 className="text-3xl font-bold text-[#1c1e4e] mb-1 text-center">Masuk</h1>
+            <p className="text-center mb-4 text-sm text-[#444]">Masuk untuk melanjutkan</p>
 
             <form className="space-y-3" onSubmit={handleLogin}>
               <input
                 type="text"
-                placeholder="Username"
+                placeholder="Nama"
                 className="w-full px-5 py-4 rounded bg-[#a8ddf0] text-[#282f66] placeholder-[#282f66] outline-none text-sm"
               />
               <input
@@ -45,7 +45,7 @@ export default function LoginPage({ onLogin }) {
                 type="submit"
                 className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
               >
-                Login
+                Masuk
               </button>
             </form>
 
@@ -55,7 +55,7 @@ export default function LoginPage({ onLogin }) {
                 onClick={() => navigate("/signup")}
                 className="underline cursor-pointer text-[#282f66] hover:text-[#1f254d]"
               >
-                Sign Up
+                Daftar
               </span>
             </p>
           </div>
