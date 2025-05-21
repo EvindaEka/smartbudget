@@ -28,8 +28,8 @@ export default function SignupPage() {
         {/* Kanan - Form Sign Up */}
         <div className="w-[400px] h-[450px] bg-[#e4f3ff] rounded-xl px-6 py-6 flex flex-col items-center justify-start shadow-lg">
           <div className="w-full mt-2">
-            <h1 className="text-3xl font-bold text-[#1c1e4e] mb-1 text-center">Sign Up</h1>
-            <p className="text-center mb-4 text-sm text-[#444]">Create a new account</p>
+            <h1 className="text-3xl font-bold text-[#1c1e4e] mb-1 text-center"> Daftar </h1>
+            <p className="text-center mb-4 text-sm text-[#444]">Buat akun baru</p>
 
             <form className="space-y-3" onSubmit={handleSignup}>
               <input
@@ -61,7 +61,7 @@ export default function SignupPage() {
                 type="submit"
                 className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
               >
-                Sign Up
+                Daftar
               </button>
             </form>
 
@@ -71,7 +71,7 @@ export default function SignupPage() {
                 onClick={() => navigate("/login")}
                 className="underline cursor-pointer text-[#282f66] hover:text-[#1f254d]"
               >
-                Login
+                Masuk
               </span>
             </p>
           </div>
