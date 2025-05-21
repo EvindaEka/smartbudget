@@ -14,4 +14,4 @@ class User(Base):
     saldo = Column(Float, default=0.0)
 
     pemasukan = relationship("Pemasukan", back_populates="user", cascade="all, delete-orphan")
-    # pengeluaran = relationship("Pengeluaran", back_populates="user", cascade="all, delete-orphan")
+    pengeluaran = relationship("Pengeluaran", back_populates="user", cascade="all, delete-orphan")

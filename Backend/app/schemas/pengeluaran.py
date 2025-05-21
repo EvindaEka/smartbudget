@@ -1,15 +1,15 @@
 from pydantic import BaseModel
 from datetime import date
 
-class PemasukanBase(BaseModel):
-    sumber: str
+class PengeluaranBase(BaseModel):
+    kategori: str
     jumlah: float
     tanggal: date
 
-class PemasukanCreate(PemasukanBase):
+class PengeluaranCreate(PengeluaranBase):
     pass
 
-class PemasukanOut(PemasukanBase):
+class PengeluaranOut(PengeluaranBase):
     id: int
     id_user: int
 
