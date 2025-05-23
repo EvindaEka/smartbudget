@@ -77,10 +77,10 @@ export default function SignupPage() {
 
   return (
     <div className="h-screen bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-white flex items-center justify-start gap-8 px-6 pl-35 flex-wrap">
+
       <div className="flex items-center justify-center">
         <img src={Logo} alt="Smart Budget Logo" className="w-[500px] h-auto" />
       </div>
-
       <div className="w-[400px] bg-[#e4f3ff] rounded-xl px-6 py-6 flex flex-col items-center justify-start shadow-lg">
         <div className="w-full mt-2">
           <h1 className="text-3xl font-bold text-[#1c1e4e] mb-1 text-center">Daftar</h1>

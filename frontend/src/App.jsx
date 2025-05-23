@@ -44,10 +44,7 @@ function App() {
           path="/pengeluaran"
           element={isLoggedIn ? <InputPengeluaran /> : <Navigate to="/login" replace />}
         />
-        <Route
-          path="/setting"
-          element={isLoggedIn ? <Setting /> : <Navigate to="/login" replace />}
-        />
+        <Route path="/setting" element={<Setting />} />
         <Route
           path="/analisis"
           element={isLoggedIn ? <Analisis /> : <Navigate to="/login" replace />}
