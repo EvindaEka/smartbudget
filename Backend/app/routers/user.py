@@ -4,9 +4,9 @@ from sqlalchemy import func
 from app.utils.auth import get_current_user
 from app.models.user import User
 from app.schemas.user import UserOut
-from app.database import get_db  # asumsi dependency untuk db session
-from app.models.pemasukan import Pemasukan  # model pemasukan
-from app.models.pengeluaran import Pengeluaran  # model pengeluaran
+from app.utils.deps import get_db
+from app.models.pemasukan import Pemasukan
+from app.models.pengeluaran import Pengeluaran
 
 router = APIRouter(
     prefix="/user",

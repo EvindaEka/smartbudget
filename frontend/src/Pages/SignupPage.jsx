@@ -66,7 +66,7 @@ export default function SignupPage() {
             </form>
 
             <p className="text-xs text-center mt-2 text-[#1c1e4e]">
-              Already have an account?{" "}
+              Sudah punya akun?{" "}
               <span
                 onClick={() => navigate("/login")}
                 className="underline cursor-pointer text-[#282f66] hover:text-[#1f254d]"
