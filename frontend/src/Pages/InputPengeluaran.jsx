@@ -1,17 +1,39 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import IconPengeluaran from "../assets/Pengeluaran icon inputan.png";
-
-// Import icon navigasi bawah
-import InputanPengeluaran from "../assets/pengeluaraninput.png";
-import InputanPemasukan from "../assets/pemasukaninput.png";
-import BerandaIcon from "../assets/beranda.png";
-import AnalisisIcon from "../assets/dashboard.png";
 import koin from "../assets/koin.png";
+import ProfilIcon from "../assets/Profil_1.png";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+// Animasi transisi framer-motion
+const pageVariants = {
+  initial: {
+    opacity: 0,
+    y: -50,
+  },
+  in: {
+    opacity: 1,
+    y: 0,
+  },
+  out: {
+    opacity: 0,
+    y: 50,
+  },
+};
+
+const pageTransition = {
+  type: "tween",
+  ease: "easeInOut",
+  duration: 0.5,
+};
 
 export default function InputPengeluaran({ onAddTransaction }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const currentPath = location.pathname;
+
   const [formData, setFormData] = useState({
     category: "",
     amount: "",
@@ -35,8 +57,8 @@ export default function InputPengeluaran({ onAddTransaction }) {
     const { category, amount, date } = formData;
     const numericAmount = parseInt(amount.replace(/\./g, ""));
 
-    if (!category || !amount || !date || isNaN(numericAmount)) {
-      alert("Semua field harus diisi dengan benar.");
+    if (!category || !amount || !date || isNaN(numericAmount) || numericAmount <= 0) {
+      toast.error("Semua field harus diisi dengan benar dan jumlah harus lebih besar dari 0.");
       return;
     }
 
@@ -58,22 +80,70 @@ export default function InputPengeluaran({ onAddTransaction }) {
       onAddTransaction(newTransaction);
     }
 
-    alert("Pengeluaran berhasil disimpan!");
+    toast.success("Pengeluaran berhasil disimpan!");
     navigate("/beranda");
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-[FFFFFF] p-6 overflow-hidden">
-      {/* Background koin */}
+    <motion.div
+      className="relative min-h-screen flex flex-col bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-white overflow-hidden"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
+      {/* Navbar */}
+      <div className="bg-[#0077b6] text-white w-full px-6 py-4 shadow-md z-10 flex justify-between items-center text-sm font-medium">
+        <div className="flex items-center gap-3">
+          <img src={ProfilIcon} alt="Profil" className="w-8 h-8 rounded-full object-cover" />
+          <div className="text-base font-semibold">Hai, Sahabat Smart</div>
+        </div>
+
+        <div className="flex gap-6 items-center text-white">
+          <span
+            onClick={() => navigate("/beranda")}
+            className={`cursor-pointer hover:underline ${currentPath === "/beranda" ? "underline font-bold" : ""}`}
+          >
+            Beranda
+          </span>
+          <span
+            onClick={() => navigate("/pemasukan")}
+            className={`cursor-pointer hover:underline ${currentPath === "/pemasukan" ? "underline font-bold" : ""}`}
+          >
+            Pemasukan
+          </span>
+          <span
+            onClick={() => navigate("/pengeluaran")}
+            className={`cursor-pointer hover:underline ${currentPath === "/pengeluaran" ? "underline font-bold" : ""}`}
+          >
+            Pengeluaran
+          </span>
+          <span
+            onClick={() => navigate("/analisis")}
+            className={`cursor-pointer hover:underline ${currentPath === "/analisis" ? "underline font-bold" : ""}`}
+          >
+            Analisis
+          </span>
+          <span
+            onClick={() => navigate("/setting")}
+            className={`cursor-pointer hover:underline ${currentPath === "/setting" ? "underline font-bold" : ""}`}
+          >
+            Tentang
+          </span>
+        </div>
+      </div>
+
+      {/* Background */}
       <img
         src={koin}
-        alt="uang background"
+        alt="koin-koin"
         className="absolute top-0 left-0 w-full h-full object-cover opacity-30 animate-bintang z-0"
       />
 
-      {/* Card Input */}
-      <div className="relative w-full max-w-xl bg-white rounded-xl p-5 shadow-md z-10 mb-20">
-        <h2 className="text-2xl font-bold mb-6 text-center">Pengeluaran</h2>
+      {/* Form Card */}
+      <div className="relative w-full max-w-xl bg-white rounded-xl p-6 shadow-md z-10 mb-20 mx-auto mt-10">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Input Pengeluaran</h2>
 
         <select
           name="category"
@@ -98,7 +168,7 @@ export default function InputPengeluaran({ onAddTransaction }) {
           placeholder="Jumlah Pengeluaran"
           value={formData.amount}
           onChange={handleInputChange}
-          className="w-full mb-4 p-2 border rounded text-lg"
+          className={`w-full mb-5 p-4 border rounded text-lg ${!formData.amount ? "border-red-500" : ""}`}
           inputMode="numeric"
         />
 
@@ -119,57 +189,6 @@ export default function InputPengeluaran({ onAddTransaction }) {
           Simpan
         </button>
       </div>
-
-      {/* Navigasi bawah dengan teks */}
-      <div className="fixed bottom-0 left-0 right-0 bg-[#92D5FF] flex justify-around items-center py-3 rounded-t-3xl shadow-md z-20 text-[10px] sm:text-xs text-center">
-        <div className="flex flex-col items-center">
-          <img
-            src={BerandaIcon}
-            alt="Beranda"
-            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
-              currentPath === "/beranda" ? "opacity-50 filter grayscale" : ""
-            }`}
-            onClick={() => navigate("/beranda")}
-          />
-          <span className="mt-1">Beranda</span>
-        </div>
-
-        <div className="flex flex-col items-center">
-          <img
-            src={InputanPemasukan}
-            alt="Pemasukan"
-            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
-              currentPath === "/pemasukan" ? "opacity-50 filter grayscale" : ""
-            }`}
-            onClick={() => navigate("/pemasukan")}
-          />
-          <span className="mt-1">Pemasukan</span>
-        </div>
-
-        <div className="flex flex-col items-center">
-          <img
-            src={InputanPengeluaran}
-            alt="Pengeluaran"
-            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
-              currentPath === "/pengeluaran" ? "opacity-50 filter grayscale" : ""
-            }`}
-            onClick={() => navigate("/pengeluaran")}
-          />
-          <span className="mt-1">Pengeluaran</span>
-        </div>
-
-        <div className="flex flex-col items-center">
-          <img
-            src={AnalisisIcon}
-            alt="Analisis"
-            className={`w-6 h-6 sm:w-8 sm:h-8 cursor-pointer object-contain transition-opacity ${
-              currentPath === "/analisis" ? "opacity-50 filter grayscale" : ""
-            }`}
-            onClick={() => navigate("/analisis")}
-          />
-          <span className="mt-1">Analisis</span>
-        </div>
-      </div>
-    </div>
+    </motion.div>
   );
 }
