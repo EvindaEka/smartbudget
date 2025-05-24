@@ -65,7 +65,7 @@ export default function SignupPage() {
         jurusan: "",
         universitas: "",
       });
-      setTimeout(() => navigate("/login"), 1500); // Redirect setelah 1.5 detik
+      // setTimeout(() => navigate("/login"), 5000); // Redirect setelah 10 detik
     } catch (err) {
       if (err.response?.data?.detail) {
         setError(err.response.data.detail);

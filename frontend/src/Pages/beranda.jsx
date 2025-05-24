@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoIosEye } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 // Asset imports
 import ProfilIcon from "../assets/Profil_1.png";
@@ -11,18 +12,9 @@ import PemasukanIcon from "../assets/Pemasukan Icon.png";
 
 // Variants for slide animation
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: -50, // dari atas ke bawah
-  },
-  in: {
-    opacity: 1,
-    y: 0,
-  },
-  out: {
-    opacity: 0,
-    y: 50, // keluar ke bawah
-  },
+  initial: { opacity: 0, y: -50 },
+  in: { opacity: 1, y: 0 },
+  out: { opacity: 0, y: 50 },
 };
 
 const pageTransition = {
@@ -38,9 +30,56 @@ const Beranda = () => {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const totalSaldo = transactions.reduce((sum, t) => {
-    return t.type === "pemasukan" ? sum + t.amount : sum - t.amount;
-  }, 0);
+  const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [pemasukanRes, pengeluaranRes] = await Promise.all([
+          axios.get("http://127.0.0.1:8000/pemasukan/list", {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+          axios.get("http://127.0.0.1:8000/pengeluaran/list", {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+        ]);
+
+        const pemasukanData = pemasukanRes.data.map((item) => ({
+          id: item.id,
+          type: "pemasukan",
+          category: item.sumber,
+          amount: item.jumlah,
+          date: item.tanggal,
+          icon: PemasukanIcon,
+        }));
+
+        const pengeluaranData = pengeluaranRes.data.map((item) => ({
+          id: item.id,
+          type: "pengeluaran",
+          category: item.kategori,
+          amount: item.jumlah,
+          date: item.tanggal,
+          icon: PengeluaranIcon,
+        }));
+
+        setTransactions([...pemasukanData, ...pengeluaranData]);
+      } catch (error) {
+        console.error("Gagal memuat data:", error);
+      }
+    };
+
+    fetchData();
+  }, [token]);
+
+  const totalPemasukan = transactions
+    .filter((t) => t.type === "pemasukan")
+    .reduce((sum, t) => sum + t.amount, 0);
+
+  const totalPengeluaran = transactions
+    .filter((t) => t.type === "pengeluaran")
+    .reduce((sum, t) => sum + t.amount, 0);
+
+  const totalSaldo = totalPemasukan - totalPengeluaran;
 
   return (
     <motion.div
@@ -51,7 +90,7 @@ const Beranda = () => {
       variants={pageVariants}
       transition={pageTransition}
     >
-      {/* Navbar Atas */}
+      {/* Navbar */}
       <div className="bg-[#0077b6] text-white w-full px-6 py-4 shadow-md z-50 flex justify-between items-center text-sm font-medium">
         <div className="flex items-center gap-3 z-10">
           <img src={ProfilIcon} alt="Profil" className="w-8 h-8 rounded-full object-cover" />
@@ -69,7 +108,9 @@ const Beranda = () => {
             <span
               key={path}
               onClick={() => navigate(path)}
-              className={`cursor-pointer hover:underline ${currentPath === path ? "underline font-bold" : ""}`}
+              className={`cursor-pointer hover:underline ${
+                currentPath === path ? "underline font-bold" : ""
+              }`}
             >
               {label}
             </span>
@@ -95,51 +136,58 @@ const Beranda = () => {
       {/* Ringkasan */}
       <div className="mx-6 flex justify-between gap-4 mb-4">
         <div className="flex-1 bg-white rounded-2xl p-4 shadow-md text-center">
-          <img src={PengeluaranIcon} alt="Pengeluaran" className="w-20 h-20 mx-auto mb-2 object-contain" />
+          <img
+            src={PengeluaranIcon}
+            alt="Pengeluaran"
+            className="w-20 h-20 mx-auto mb-2 object-contain"
+          />
           <div className="text-sm text-gray-700 font-medium">Pengeluaran</div>
           <div className="text-red-600 font-bold text-lg">
-            {transactions
-              .filter((t) => t.type === "pengeluaran")
-              .reduce((sum, t) => sum + t.amount, 0)
-              .toLocaleString("id-ID")}
+            {totalPengeluaran.toLocaleString("id-ID")}
           </div>
         </div>
 
         <div className="flex-1 bg-white rounded-2xl p-4 shadow-md text-center">
-          <img src={PemasukanIcon} alt="Pemasukan" className="w-20 h-20 mx-auto mb-2 object-contain" />
+          <img
+            src={PemasukanIcon}
+            alt="Pemasukan"
+            className="w-20 h-20 mx-auto mb-2 object-contain"
+          />
           <div className="text-sm text-gray-700 font-medium">Pemasukan</div>
           <div className="text-green-600 font-bold text-lg">
-            {transactions
-              .filter((t) => t.type === "pemasukan")
-              .reduce((sum, t) => sum + t.amount, 0)
-              .toLocaleString("id-ID")}
+            {totalPemasukan.toLocaleString("id-ID")}
           </div>
         </div>
       </div>
 
       {/* Transaksi Terbaru */}
       <div className="mx-6 bg-white rounded-2xl p-4 shadow-md relative flex-1 overflow-y-auto">
-        {[...transactions].reverse().map((tx) => (
-          <div key={tx.id} className="flex justify-between items-center mb-4">
-            <div className="flex items-center gap-3">
-              <img src={tx.icon} alt={tx.category} className="w-6 h-6" />
-              <div>
-                <div className="text-xs font-semibold text-[#1F77B4] bg-[#C5F1FF] inline-block px-2 py-0.5 rounded-full mb-1">
-                  {tx.date}
+        {[...transactions]
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 10)
+          .map((tx) => (
+            <div key={tx.id} className="flex justify-between items-center mb-6">
+              <div className="flex items-center gap-4">
+                <img src={tx.icon} alt={tx.category} className="w-8 h-8" />
+                <div>
+                  <div className="text-sm font-semibold text-[#1F77B4] bg-[#C5F1FF] inline-block px-3 py-1 rounded-full mb-1">
+                    {tx.date}
+                  </div>
+                  <div className="text-base font-semibold text-gray-900">
+                    {tx.category}
+                  </div>
                 </div>
-                <div className="text-sm font-medium text-gray-800">{tx.category}</div>
+              </div>
+              <div
+                className={`font-bold text-base ${
+                  tx.type === "pemasukan" ? "text-green-700" : "text-red-700"
+                }`}
+              >
+                {tx.type === "pemasukan" ? "+" : "-"}
+                {tx.amount.toLocaleString("id-ID")}
               </div>
             </div>
-            <div
-              className={`${
-                tx.type === "pemasukan" ? "text-green-600" : "text-red-600"
-              } font-bold text-sm`}
-            >
-              {tx.type === "pemasukan" ? "+" : "-"}
-              {tx.amount.toLocaleString("id-ID")}
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </motion.div>
   );

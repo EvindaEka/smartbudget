@@ -5,22 +5,13 @@ import ProfilIcon from "../assets/Profil_1.png";
 import koin from "../assets/koin.png";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
+import axios from "axios";
 import "react-toastify/dist/ReactToastify.css";
 
-// Transisi dari atas ke bawah
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: -50,
-  },
-  in: {
-    opacity: 1,
-    y: 0,
-  },
-  out: {
-    opacity: 0,
-    y: 50,
-  },
+  initial: { opacity: 0, y: -50 },
+  in: { opacity: 1, y: 0 },
+  out: { opacity: 0, y: 50 },
 };
 
 const pageTransition = {
@@ -35,12 +26,12 @@ export default function InputPemasukan({ onAddTransaction }) {
   const currentPath = location.pathname;
 
   const [formData, setFormData] = useState({
-    category: "",
-    amount: "",
-    date: new Date().toISOString().slice(0, 10),
+    sumber: "",
+    jumlah: "",
+    tanggal: new Date().toISOString().slice(0, 10),
   });
 
-  const formatNumber = (value) => {
+  const formatRupiah = (value) => {
     const numberString = value.replace(/\D/g, "");
     return numberString ? Number(numberString).toLocaleString("id-ID") : "";
   };
@@ -49,39 +40,47 @@ export default function InputPemasukan({ onAddTransaction }) {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "amount" ? formatNumber(value) : value,
+      [name]: name === "jumlah" ? formatRupiah(value) : value,
     }));
   };
 
-  const handleSave = () => {
-    const { category, amount, date } = formData;
-    const numericAmount = parseInt(amount.replace(/\./g, ""));
-
-    if (!category || !amount || !date || isNaN(numericAmount) || numericAmount <= 0) {
-      toast.error("Semua field harus diisi dengan benar dan jumlah harus lebih besar dari 0.");
+  const handleSave = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("Anda belum login.");
       return;
     }
 
-    const newTransaction = {
-      id: Date.now(),
-      type: "pemasukan",
-      category,
-      amount: numericAmount,
-      date: new Date(date).toLocaleDateString("id-ID", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }),
-      icon: IconPemasukan,
-    };
-
-    if (onAddTransaction) {
-      onAddTransaction(newTransaction);
+    const numericJumlah = parseInt(formData.jumlah.replace(/\./g, ""));
+    if (!formData.sumber || isNaN(numericJumlah) || numericJumlah <= 0) {
+      toast.error("Mohon isi semua field dengan benar.");
+      return;
     }
 
-    toast.success("Pemasukan berhasil disimpan!");
-    navigate("/beranda");
+    const payload = {
+      sumber: formData.sumber,
+      jumlah: numericJumlah,
+      tanggal: formData.tanggal,
+    };
+
+    try {
+      const res = await axios.post("http://localhost:8000/pemasukan/", payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      toast.success("Pemasukan berhasil disimpan!");
+
+      if (onAddTransaction) {
+        onAddTransaction({ ...res.data, icon: IconPemasukan });
+      }
+
+      navigate("/beranda");
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response?.data?.detail || "Gagal menyimpan pemasukan.");
+    }
   };
 
   return (
@@ -93,60 +92,41 @@ export default function InputPemasukan({ onAddTransaction }) {
       variants={pageVariants}
       transition={pageTransition}
     >
-      {/* Navbar Atas */}
+      {/* Navbar */}
       <div className="bg-[#0077b6] text-white w-full px-6 py-4 shadow-md z-10 flex justify-between items-center text-sm font-medium">
         <div className="flex items-center gap-3">
           <img src={ProfilIcon} alt="Profil" className="w-8 h-8 rounded-full object-cover" />
           <div className="text-base font-semibold">Hai, Sahabat Smart</div>
         </div>
         <div className="flex gap-6 items-center text-white">
-          <span
-            onClick={() => navigate("/beranda")}
-            className={`cursor-pointer hover:underline ${currentPath === "/beranda" ? "underline font-bold" : ""}`}
-          >
-            Beranda
-          </span>
-          <span
-            onClick={() => navigate("/pemasukan")}
-            className={`cursor-pointer hover:underline ${currentPath === "/pemasukan" ? "underline font-bold" : ""}`}
-          >
-            Pemasukan
-          </span>
-          <span
-            onClick={() => navigate("/pengeluaran")}
-            className={`cursor-pointer hover:underline ${currentPath === "/pengeluaran" ? "underline font-bold" : ""}`}
-          >
-            Pengeluaran
-          </span>
-          <span
-            onClick={() => navigate("/analisis")}
-            className={`cursor-pointer hover:underline ${currentPath === "/analisis" ? "underline font-bold" : ""}`}
-          >
-            Analisis
-          </span>
-          <span
-            onClick={() => navigate("/setting")}
-            className={`cursor-pointer hover:underline ${currentPath === "/setting" ? "underline font-bold" : ""}`}
-          >
-            Tentang
-          </span>
+          {["beranda", "pemasukan", "pengeluaran", "analisis", "setting"].map((path) => (
+            <span
+              key={path}
+              onClick={() => navigate(`/${path}`)}
+              className={`cursor-pointer hover:underline ${
+                currentPath === `/${path}` ? "underline font-bold" : ""
+              }`}
+            >
+              {path.charAt(0).toUpperCase() + path.slice(1)}
+            </span>
+          ))}
         </div>
       </div>
 
-      {/* Background Image */}
+      {/* Background */}
       <img
         src={koin}
         alt="koin-koin"
         className="absolute top-0 left-0 w-full h-full object-cover opacity-30 animate-bintang z-0"
       />
 
-      {/* Form Input */}
+      {/* Form */}
       <div className="relative w-full max-w-xl bg-white rounded-xl p-6 shadow-md z-10 mb-20 mx-auto mt-10">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Input Pemasukan</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Pemasukan</h2>
 
         <select
-          name="category"
-          value={formData.category}
+          name="sumber"
+          value={formData.sumber}
           onChange={handleInputChange}
           className="w-full mb-4 p-2 border rounded text-lg"
         >
@@ -161,19 +141,19 @@ export default function InputPemasukan({ onAddTransaction }) {
 
         <input
           type="text"
-          name="amount"
+          name="jumlah"
           placeholder="Jumlah Saldo"
-          value={formData.amount}
+          value={formData.jumlah}
           onChange={handleInputChange}
-          className={`w-full mb-5 p-4 border rounded text-lg ${!formData.amount ? "border-red-500" : ""}`}
+          className="w-full mb-5 p-4 border rounded text-lg"
           inputMode="numeric"
         />
 
         <label className="block mb-2 font-semibold text-gray-700 text-lg">Tanggal</label>
         <input
           type="date"
-          name="date"
-          value={formData.date}
+          name="tanggal"
+          value={formData.tanggal}
           onChange={handleInputChange}
           className="w-full mb-4 p-2 border rounded text-lg"
           max={new Date().toISOString().slice(0, 10)}

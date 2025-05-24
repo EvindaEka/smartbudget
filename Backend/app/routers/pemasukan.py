@@ -12,7 +12,6 @@ from app.utils.deps import get_db
 
 router = APIRouter(prefix="/pemasukan", tags=["pemasukan"])
 
-
 @router.post("/", response_model=PemasukanOut)
 def create_pemasukan(
     data: PemasukanCreate,

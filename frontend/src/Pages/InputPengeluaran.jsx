@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import IconPengeluaran from "../assets/Pengeluaran icon inputan.png";
 import koin from "../assets/koin.png";
@@ -7,20 +7,11 @@ import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Animasi transisi framer-motion
+// Animasi framer-motion
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: -50,
-  },
-  in: {
-    opacity: 1,
-    y: 0,
-  },
-  out: {
-    opacity: 0,
-    y: 50,
-  },
+  initial: { opacity: 0, y: -50 },
+  in: { opacity: 1, y: 0 },
+  out: { opacity: 0, y: 50 },
 };
 
 const pageTransition = {
@@ -29,7 +20,7 @@ const pageTransition = {
   duration: 0.5,
 };
 
-export default function InputPengeluaran({ onAddTransaction }) {
+export default function InputPengeluaran() {
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -39,6 +30,13 @@ export default function InputPengeluaran({ onAddTransaction }) {
     amount: "",
     date: new Date().toISOString().slice(0, 10),
   });
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const formatNumber = (value) => {
     const numberString = value.replace(/\D/g, "");
@@ -53,7 +51,7 @@ export default function InputPengeluaran({ onAddTransaction }) {
     }));
   };
 
-  const handleAddTransaction = () => {
+  const handleAddTransaction = async () => {
     const { category, amount, date } = formData;
     const numericAmount = parseInt(amount.replace(/\./g, ""));
 
@@ -62,26 +60,31 @@ export default function InputPengeluaran({ onAddTransaction }) {
       return;
     }
 
-    const newTransaction = {
-      id: Date.now(),
-      type: "pengeluaran",
-      category,
-      amount: numericAmount,
-      date: new Date(date).toLocaleDateString("id-ID", {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      }),
-      icon: IconPengeluaran,
-    };
+    try {
+      const response = await fetch("http://localhost:8000/pengeluaran/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          kategori: category,
+          jumlah: numericAmount,
+          tanggal: date,
+        }),
+      });
 
-    if (onAddTransaction) {
-      onAddTransaction(newTransaction);
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Gagal menyimpan pengeluaran");
+      }
+
+      await response.json();
+      toast.success("Pengeluaran berhasil disimpan!");
+      navigate("/beranda");
+    } catch (error) {
+      toast.error(error.message || "Terjadi kesalahan saat menyimpan data");
     }
-
-    toast.success("Pengeluaran berhasil disimpan!");
-    navigate("/beranda");
   };
 
   return (
@@ -99,7 +102,6 @@ export default function InputPengeluaran({ onAddTransaction }) {
           <img src={ProfilIcon} alt="Profil" className="w-8 h-8 rounded-full object-cover" />
           <div className="text-base font-semibold">Hai, Sahabat Smart</div>
         </div>
-
         <div className="flex gap-6 items-center text-white">
           <span
             onClick={() => navigate("/beranda")}
@@ -135,15 +137,11 @@ export default function InputPengeluaran({ onAddTransaction }) {
       </div>
 
       {/* Background */}
-      <img
-        src={koin}
-        alt="koin-koin"
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-30 animate-bintang z-0"
-      />
+      <img src={koin} alt="koin-koin" className="absolute top-0 left-0 w-full h-full object-cover opacity-30 animate-bintang z-0" />
 
       {/* Form Card */}
       <div className="relative w-full max-w-xl bg-white rounded-xl p-6 shadow-md z-10 mb-20 mx-auto mt-10">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Input Pengeluaran</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Pengeluaran</h2>
 
         <select
           name="category"
@@ -151,9 +149,7 @@ export default function InputPengeluaran({ onAddTransaction }) {
           onChange={handleInputChange}
           className="w-full mb-4 p-2 border rounded text-lg"
         >
-          <option value="" disabled>
-            Pilih Kategori Pengeluaran
-          </option>
+          <option value="" disabled>Pilih Kategori Pengeluaran</option>
           <option value="Makanan dan Minuman">Makanan dan Minuman</option>
           <option value="Sewa Kos">Sewa Kos</option>
           <option value="Transportasi">Transportasi</option>
