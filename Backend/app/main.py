@@ -1,8 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
 from app.database import Base, engine
-from app.routers import auth, pemasukan, user, pengeluaran
+from app.routers import auth, pemasukan, user, pengeluaran, dashboard
 
 # Inisialisasi semua tabel dari model
 Base.metadata.create_all(bind=engine)
