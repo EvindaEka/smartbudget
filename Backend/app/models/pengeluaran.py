@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 class Pengeluaran(Base):
     __tablename__ = "pengeluaran"
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    id_pengeluaran = Column(Integer, primary_key=True, index=True, autoincrement=True)
     id_user = Column(Integer, ForeignKey("users.id_user"), nullable=False)
     kategori = Column(String, nullable=False)
     jumlah = Column(Float, nullable=False)

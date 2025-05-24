@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 class Pemasukan(Base):
     __tablename__ = "pemasukan"
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    id_pemasukan = Column(Integer, primary_key=True, index=True, autoincrement=True)
     id_user = Column(Integer, ForeignKey("users.id_user"), nullable=False)
     sumber = Column(String, nullable=False)
     jumlah = Column(Float, nullable=False)

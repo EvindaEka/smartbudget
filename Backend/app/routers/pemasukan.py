@@ -83,7 +83,6 @@ def get_total_pemasukan_bulanan(
         "total_pemasukan_bulan_ini": total_bulanan
     }
 
-
 @router.get("/terbaru-periode", response_model=List[PemasukanOut], summary="Daftar pemasukan terbaru berdasarkan periode")
 def get_pemasukan_terbaru_periode(
     tipe: str = Query(..., enum=["harian", "bulanan", "tahunan"]),
@@ -102,7 +101,7 @@ def get_pemasukan_terbaru_periode(
             raise HTTPException(status_code=404, detail="Tidak ada pemasukan ditemukan")
 
         results = base_query.filter(Pemasukan.tanggal == tanggal_terbaru[0]) \
-                            .order_by(Pemasukan.id.desc()).all()
+                            .order_by(Pemasukan.id_pemasukan.desc()).all()
 
     elif tipe == "bulanan":
         latest = (
@@ -125,7 +124,7 @@ def get_pemasukan_terbaru_periode(
         results = base_query.filter(
             extract("year", Pemasukan.tanggal) == tahun_terbaru,
             extract("month", Pemasukan.tanggal) == bulan_terbaru
-        ).order_by(Pemasukan.tanggal.desc(), Pemasukan.id.desc()).all()
+        ).order_by(Pemasukan.tanggal.desc(), Pemasukan.id_pemasukan.desc()).all()
 
     elif tipe == "tahunan":
         tahun_terbaru = (
@@ -141,7 +140,7 @@ def get_pemasukan_terbaru_periode(
 
         results = base_query.filter(
             extract("year", Pemasukan.tanggal) == tahun_terbaru
-        ).order_by(Pemasukan.tanggal.desc(), Pemasukan.id.desc()).all()
+        ).order_by(Pemasukan.tanggal.desc(), Pemasukan.id_pemasukan.desc()).all()
 
     else:
         raise HTTPException(status_code=400, detail="Tipe tidak valid")

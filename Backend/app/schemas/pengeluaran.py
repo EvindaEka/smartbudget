@@ -10,7 +10,7 @@ class PengeluaranCreate(PengeluaranBase):
     pass
 
 class PengeluaranOut(PengeluaranBase):
-    id: int
+    id_pengeluaran: int
     id_user: int
 
     class Config:

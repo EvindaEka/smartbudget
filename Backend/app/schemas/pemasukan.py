@@ -10,7 +10,7 @@ class PemasukanCreate(PemasukanBase):
     pass
 
 class PemasukanOut(PemasukanBase):
-    id: int
+    id_pemasukan: int
     id_user: int
 
     class Config:

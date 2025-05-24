@@ -100,7 +100,7 @@ def get_pengeluaran_terbaru_periode(
             raise HTTPException(status_code=404, detail="Tidak ada pengeluaran ditemukan")
 
         results = base_query.filter(Pengeluaran.tanggal == tanggal_terbaru[0]) \
-                            .order_by(Pengeluaran.id.desc()).all()
+                            .order_by(Pengeluaran.id_pengeluaran.desc()).all()
 
     elif tipe == "bulanan":
         latest = (
@@ -119,7 +119,7 @@ def get_pengeluaran_terbaru_periode(
         results = base_query.filter(
             extract("month", Pengeluaran.tanggal) == bulan_terbaru,
             extract("year", Pengeluaran.tanggal) == tahun_terbaru
-        ).order_by(Pengeluaran.tanggal.desc(), Pengeluaran.id.desc()).all()
+        ).order_by(Pengeluaran.tanggal.desc(), Pengeluaran.id_pengeluaran.desc()).all()
 
     elif tipe == "tahunan":
         tahun_terbaru = (
@@ -135,7 +135,7 @@ def get_pengeluaran_terbaru_periode(
 
         results = base_query.filter(
             extract("year", Pengeluaran.tanggal) == tahun_terbaru
-        ).order_by(Pengeluaran.tanggal.desc(), Pengeluaran.id.desc()).all()
+        ).order_by(Pengeluaran.tanggal.desc(), Pengeluaran.id_pengeluaran.desc()).all()
 
     else:
         raise HTTPException(status_code=400, detail="Tipe tidak valid")
