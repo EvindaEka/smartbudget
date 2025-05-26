@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import IconPemasukan from "../assets/pemasukaninput.png";
-import ProfilIcon from "../assets/Profil_1.png";
+import IconPengeluaran from "../assets/Pengeluaran icon inputan.png";
 import koin from "../assets/koin.png";
-import { toast } from "react-toastify";
+import ProfilIcon from "../assets/Profil_1.png";
 import { motion } from "framer-motion";
-import axios from "axios";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+// Animasi transisi framer-motion
 const pageVariants = {
   initial: { opacity: 0, y: -50 },
   in: { opacity: 1, y: 0 },
@@ -20,18 +20,18 @@ const pageTransition = {
   duration: 0.5,
 };
 
-export default function InputPemasukan({ onAddTransaction }) {
+export default function InputPengeluaran() {
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
 
   const [formData, setFormData] = useState({
-    sumber: "",
-    jumlah: "",
-    tanggal: new Date().toISOString().slice(0, 10),
+    category: "",
+    amount: "",
+    date: new Date().toISOString().slice(0, 10),
   });
 
-  const formatRupiah = (value) => {
+  const formatNumber = (value) => {
     const numberString = value.replace(/\D/g, "");
     return numberString ? Number(numberString).toLocaleString("id-ID") : "";
   };
@@ -40,46 +40,43 @@ export default function InputPemasukan({ onAddTransaction }) {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === "jumlah" ? formatRupiah(value) : value,
+      [name]: name === "amount" ? formatNumber(value) : value,
     }));
   };
 
-  const handleSave = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      toast.error("Anda belum login.");
+  const handleAddTransaction = async () => {
+    const { category, amount, date } = formData;
+    const numericAmount = parseInt(amount.replace(/\./g, ""));
+
+    if (!category || !amount || !date || isNaN(numericAmount) || numericAmount <= 0) {
+      toast.error("Semua field harus diisi dengan benar dan jumlah harus lebih besar dari 0.");
       return;
     }
-
-    const numericJumlah = parseInt(formData.jumlah.replace(/\./g, ""));
-    if (!formData.sumber || isNaN(numericJumlah) || numericJumlah <= 0) {
-      toast.error("Mohon isi semua field dengan benar.");
-      return;
-    }
-
-    const payload = {
-      sumber: formData.sumber,
-      jumlah: numericJumlah,
-      tanggal: formData.tanggal,
-    };
 
     try {
-      const res = await axios.post("http://localhost:8000/pemasukan/", payload, {
+      const response = await fetch("http://localhost:8000/pengeluaran/", {
+        method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        body: JSON.stringify({
+          kategori: category,
+          jumlah: numericAmount,
+          tanggal: date,
+        }),
       });
 
-      toast.success("Pemasukan berhasil disimpan!");
-
-      if (onAddTransaction) {
-        onAddTransaction({ ...res.data, icon: IconPemasukan });
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Gagal menyimpan pengeluaran");
       }
 
+      const result = await response.json();
+      toast.success("Pengeluaran berhasil disimpan!");
       navigate("/beranda");
-    } catch (err) {
-      console.error(err);
-      toast.error(err.response?.data?.detail || "Gagal menyimpan pemasukan.");
+    } catch (error) {
+      toast.error(error.message || "Terjadi kesalahan saat menyimpan data");
     }
   };
 
@@ -99,69 +96,59 @@ export default function InputPemasukan({ onAddTransaction }) {
           <div className="text-base font-semibold">Hai, Sahabat Smart</div>
         </div>
         <div className="flex gap-6 items-center text-white">
-          {["beranda", "pemasukan", "pengeluaran", "analisis", "setting"].map((path) => (
-            <span
-              key={path}
-              onClick={() => navigate(`/${path}`)}
-              className={`cursor-pointer hover:underline ${
-                currentPath === `/${path}` ? "underline font-bold" : ""
-              }`}
-            >
-              {path.charAt(0).toUpperCase() + path.slice(1)}
-            </span>
-          ))}
+          <span onClick={() => navigate("/beranda")} className={`cursor-pointer hover:underline ${currentPath === "/beranda" ? "underline font-bold" : ""}`}>Beranda</span>
+          <span onClick={() => navigate("/pemasukan")} className={`cursor-pointer hover:underline ${currentPath === "/pemasukan" ? "underline font-bold" : ""}`}>Pemasukan</span>
+          <span onClick={() => navigate("/pengeluaran")} className={`cursor-pointer hover:underline ${currentPath === "/pengeluaran" ? "underline font-bold" : ""}`}>Pengeluaran</span>
+          <span onClick={() => navigate("/analisis")} className={`cursor-pointer hover:underline ${currentPath === "/analisis" ? "underline font-bold" : ""}`}>Analisis</span>
+          <span onClick={() => navigate("/setting")} className={`cursor-pointer hover:underline ${currentPath === "/setting" ? "underline font-bold" : ""}`}>Tentang</span>
         </div>
       </div>
 
       {/* Background */}
-      <img
-        src={koin}
-        alt="koin-koin"
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-30 animate-bintang z-0"
-      />
+      <img src={koin} alt="koin-koin" className="absolute top-0 left-0 w-full h-full object-cover opacity-30 animate-bintang z-0" />
 
-      {/* Form */}
+      {/* Form Card */}
       <div className="relative w-full max-w-xl bg-white rounded-xl p-6 shadow-md z-10 mb-20 mx-auto mt-10">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Pemasukan</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Input Pengeluaran</h2>
 
         <select
-          name="sumber"
-          value={formData.sumber}
+          name="category"
+          value={formData.category}
           onChange={handleInputChange}
           className="w-full mb-4 p-2 border rounded text-lg"
         >
-          <option value="" disabled>
-            Pilih Kategori Pemasukan
-          </option>
-          <option value="Uang saku orangtua">Uang saku orangtua</option>
-          <option value="Gaji/upah">Gaji/upah</option>
-          <option value="Beasiswa">Beasiswa</option>
+          <option value="" disabled>Pilih Kategori Pengeluaran</option>
+          <option value="Makanan dan Minuman">Makanan dan Minuman</option>
+          <option value="Sewa Kos">Sewa Kos</option>
+          <option value="Transportasi">Transportasi</option>
+          <option value="Kebutuhan Akademik">Kebutuhan Akademik</option>
+          <option value="Paket Internet">Paket Internet</option>
           <option value="Lainnya">Lainnya</option>
         </select>
 
         <input
           type="text"
-          name="jumlah"
-          placeholder="Jumlah Saldo"
-          value={formData.jumlah}
+          name="amount"
+          placeholder="Jumlah Pengeluaran"
+          value={formData.amount}
           onChange={handleInputChange}
-          className="w-full mb-5 p-4 border rounded text-lg"
+          className={`w-full mb-5 p-4 border rounded text-lg ${!formData.amount ? "border-red-500" : ""}`}
           inputMode="numeric"
         />
 
         <label className="block mb-2 font-semibold text-gray-700 text-lg">Tanggal</label>
         <input
           type="date"
-          name="tanggal"
-          value={formData.tanggal}
+          name="date"
+          value={formData.date}
           onChange={handleInputChange}
           className="w-full mb-4 p-2 border rounded text-lg"
           max={new Date().toISOString().slice(0, 10)}
         />
 
         <button
-          onClick={handleSave}
-          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
+          onClick={handleAddTransaction}
+          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300"
         >
           Simpan
         </button>
