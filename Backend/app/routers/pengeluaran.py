@@ -142,3 +142,40 @@ def get_pengeluaran_terbaru_periode(
 
     return results
 
+@router.get("/kos-dan-internet-bulanan")
+def get_kos_dan_internet_bulanan(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    kategori_dipilih = ["Kos", "Paket Internet"]
+
+    results = (
+        db.query(
+            extract("year", Pengeluaran.tanggal).label("tahun"),
+            extract("month", Pengeluaran.tanggal).label("bulan"),
+            Pengeluaran.kategori,
+            func.sum(Pengeluaran.jumlah).label("total")
+        )
+        .filter(Pengeluaran.id_user == current_user.id_user)
+        .filter(Pengeluaran.kategori.in_(kategori_dipilih))
+        .group_by("tahun", "bulan", Pengeluaran.kategori)
+        .order_by("tahun", "bulan")
+        .all()
+    )
+
+    # Strukturkan hasil per kategori
+    data = {
+        "kos": [],
+        "paket internet": []
+    }
+
+    for row in results:
+        kategori = row.kategori.lower()
+        if kategori in data:
+            data[kategori].append({
+                "tahun": int(row.tahun),
+                "bulan": int(row.bulan),
+                "total": row.total
+            })
+
+    return data
