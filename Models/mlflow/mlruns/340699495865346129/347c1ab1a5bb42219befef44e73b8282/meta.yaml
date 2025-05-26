@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/340699495865346129/347c1ab1a5bb42219befef44e73b8282/artifacts
+end_time: 1748185768839
+entry_point_name: ''
+experiment_id: '340699495865346129'
+lifecycle_stage: active
+run_id: 347c1ab1a5bb42219befef44e73b8282
+run_name: SES Makanan
+run_uuid: 347c1ab1a5bb42219befef44e73b8282
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748185753872
+status: 3
+tags: []
+user_id: LENOVO

@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748185848084
+current_stage: None
+description: ''
+last_updated_timestamp: 1748185848084
+name: HoltWinters_Makanan
+run_id: e15069b6a8ae45e9b9e444909d89b753
+run_link: ''
+source: mlflow-artifacts:/429778467448712332/e15069b6a8ae45e9b9e444909d89b753/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/429778467448712332/e15069b6a8ae45e9b9e444909d89b753/artifacts/model
+user_id: null
+version: 2

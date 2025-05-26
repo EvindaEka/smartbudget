@@ -1,0 +1,22 @@
+artifact_path: model
+flavors:
+  python_function:
+    artifacts:
+      model_path:
+        path: artifacts\best_arima_model.pkl
+        uri: C:\Users\lapto\AppData\Local\Temp\tmpxugcrnlk\best_arima_model.pkl
+    cloudpickle_version: 3.0.0
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.5
+    streamable: false
+mlflow_version: 2.22.0
+model_size_bytes: 162236
+model_uuid: ccce59560ed74eb084a8c03d1b052497
+prompts: null
+run_id: 1d85256363fe4a3ea430fdd6a25dd30f
+utc_time_created: '2025-05-25 15:22:23.842996'

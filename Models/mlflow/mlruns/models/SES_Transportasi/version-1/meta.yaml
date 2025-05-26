@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748186465581
+current_stage: None
+description: ''
+last_updated_timestamp: 1748186465581
+name: SES_Transportasi
+run_id: 6c7da63270ed44098e4f4f0c7e203b7c
+run_link: ''
+source: mlflow-artifacts:/280016893802841608/6c7da63270ed44098e4f4f0c7e203b7c/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/280016893802841608/6c7da63270ed44098e4f4f0c7e203b7c/artifacts/model
+user_id: null
+version: 1

@@ -1,0 +1,22 @@
+artifact_path: model
+flavors:
+  python_function:
+    artifacts:
+      model_path:
+        path: artifacts\sarima_model.pkl
+        uri: C:\Users\lapto\AppData\Local\Temp\tmpbvhose6c\sarima_model.pkl
+    cloudpickle_version: 3.0.0
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.5
+    streamable: false
+mlflow_version: 2.22.0
+model_size_bytes: 4480802
+model_uuid: e241e8f12a86478c89a02c76354d4361
+prompts: null
+run_id: 72d9d1b20362404fb702ca8900156fc9
+utc_time_created: '2025-05-25 13:50:12.730782'

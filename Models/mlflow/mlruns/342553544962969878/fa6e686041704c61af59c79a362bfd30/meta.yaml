@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/342553544962969878/fa6e686041704c61af59c79a362bfd30/artifacts
+end_time: 1748181395676
+entry_point_name: ''
+experiment_id: '342553544962969878'
+lifecycle_stage: active
+run_id: fa6e686041704c61af59c79a362bfd30
+run_name: ARIMA Kebutuhan Akademik v2
+run_uuid: fa6e686041704c61af59c79a362bfd30
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748181383947
+status: 3
+tags: []
+user_id: LENOVO

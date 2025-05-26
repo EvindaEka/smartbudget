@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/280016893802841608/6c7da63270ed44098e4f4f0c7e203b7c/artifacts
+end_time: 1748186466029
+entry_point_name: ''
+experiment_id: '280016893802841608'
+lifecycle_stage: active
+run_id: 6c7da63270ed44098e4f4f0c7e203b7c
+run_name: SES Transportasi
+run_uuid: 6c7da63270ed44098e4f4f0c7e203b7c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748186453691
+status: 3
+tags: []
+user_id: LENOVO

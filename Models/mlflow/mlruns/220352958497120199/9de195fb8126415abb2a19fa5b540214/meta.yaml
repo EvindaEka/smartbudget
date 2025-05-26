@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/220352958497120199/9de195fb8126415abb2a19fa5b540214/artifacts
+end_time: 1748181997533
+entry_point_name: ''
+experiment_id: '220352958497120199'
+lifecycle_stage: active
+run_id: 9de195fb8126415abb2a19fa5b540214
+run_name: SES Kesehatan
+run_uuid: 9de195fb8126415abb2a19fa5b540214
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748181985019
+status: 3
+tags: []
+user_id: LENOVO

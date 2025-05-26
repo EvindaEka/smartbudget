@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748181997314
+current_stage: None
+description: ''
+last_updated_timestamp: 1748181997314
+name: SES_Kesehatan
+run_id: 9de195fb8126415abb2a19fa5b540214
+run_link: ''
+source: mlflow-artifacts:/220352958497120199/9de195fb8126415abb2a19fa5b540214/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/220352958497120199/9de195fb8126415abb2a19fa5b540214/artifacts/model
+user_id: null
+version: 1

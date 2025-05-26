@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/168998571412116742/590abeec8e344e418dc3415487499751/artifacts
+end_time: 1748185212336
+entry_point_name: ''
+experiment_id: '168998571412116742'
+lifecycle_stage: active
+run_id: 590abeec8e344e418dc3415487499751
+run_name: Holt-Winters Lainnya
+run_uuid: 590abeec8e344e418dc3415487499751
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748185196110
+status: 3
+tags: []
+user_id: LENOVO

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/239731866476696009/b5c9975963a747788360dd38298bc807/artifacts
+end_time: 1748181917620
+entry_point_name: ''
+experiment_id: '239731866476696009'
+lifecycle_stage: active
+run_id: b5c9975963a747788360dd38298bc807
+run_name: SARIMA Kesehatan
+run_uuid: b5c9975963a747788360dd38298bc807
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748181903582
+status: 3
+tags: []
+user_id: LENOVO

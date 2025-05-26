@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748184197811
+current_stage: None
+description: ''
+last_updated_timestamp: 1748184197811
+name: HoltWinters_Kesehatan
+run_id: 5d5dbbe51bd94d0d81b89a46e45b3538
+run_link: ''
+source: mlflow-artifacts:/152383534479133121/5d5dbbe51bd94d0d81b89a46e45b3538/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/152383534479133121/5d5dbbe51bd94d0d81b89a46e45b3538/artifacts/model
+user_id: null
+version: 2

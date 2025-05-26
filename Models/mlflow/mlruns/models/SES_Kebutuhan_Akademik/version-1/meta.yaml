@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748181030996
+current_stage: None
+description: ''
+last_updated_timestamp: 1748181030996
+name: SES_Kebutuhan_Akademik
+run_id: 653ef8d74a8c43839e4faa65f0d90cb1
+run_link: ''
+source: mlflow-artifacts:/562086559122603527/653ef8d74a8c43839e4faa65f0d90cb1/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/562086559122603527/653ef8d74a8c43839e4faa65f0d90cb1/artifacts/model
+user_id: null
+version: 1

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/875500965884668835/804422f45ce54524b7a5aebcf3fa3a14/artifacts
+end_time: 1748184592502
+entry_point_name: ''
+experiment_id: '875500965884668835'
+lifecycle_stage: active
+run_id: 804422f45ce54524b7a5aebcf3fa3a14
+run_name: SES Lainnya
+run_uuid: 804422f45ce54524b7a5aebcf3fa3a14
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748184577099
+status: 3
+tags: []
+user_id: LENOVO

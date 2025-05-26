@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748181917388
+current_stage: None
+description: ''
+last_updated_timestamp: 1748181917388
+name: SARIMA_Kesehatan
+run_id: b5c9975963a747788360dd38298bc807
+run_link: ''
+source: mlflow-artifacts:/239731866476696009/b5c9975963a747788360dd38298bc807/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/239731866476696009/b5c9975963a747788360dd38298bc807/artifacts/model
+user_id: null
+version: 1

@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748185768659
+current_stage: None
+description: ''
+last_updated_timestamp: 1748185768659
+name: SES_Makanan
+run_id: 347c1ab1a5bb42219befef44e73b8282
+run_link: ''
+source: mlflow-artifacts:/340699495865346129/347c1ab1a5bb42219befef44e73b8282/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/340699495865346129/347c1ab1a5bb42219befef44e73b8282/artifacts/model
+user_id: null
+version: 1

@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748181831591
+current_stage: None
+description: ''
+last_updated_timestamp: 1748181831591
+name: ARIMA_Kesehatan
+run_id: 2d6aca43d8a74b41b3a138357f61022e
+run_link: ''
+source: mlflow-artifacts:/143117752039380188/2d6aca43d8a74b41b3a138357f61022e/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/143117752039380188/2d6aca43d8a74b41b3a138357f61022e/artifacts/model
+user_id: null
+version: 1

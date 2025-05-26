@@ -1,0 +1,22 @@
+artifact_path: model
+flavors:
+  python_function:
+    artifacts:
+      model_path:
+        path: artifacts\Kesehatan.pkl
+        uri: C:\Users\lapto\AppData\Local\Temp\tmp5qstdeb0\Kesehatan.pkl
+    cloudpickle_version: 3.0.0
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.5
+    streamable: false
+mlflow_version: 2.22.0
+model_size_bytes: 4480778
+model_uuid: f8fe8cab4e1e4ed2a5cd4fee572d940b
+prompts: null
+run_id: b5c9975963a747788360dd38298bc807
+utc_time_created: '2025-05-25 14:05:03.863054'

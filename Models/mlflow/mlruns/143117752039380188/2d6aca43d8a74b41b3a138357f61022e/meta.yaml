@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/143117752039380188/2d6aca43d8a74b41b3a138357f61022e/artifacts
+end_time: 1748181831815
+entry_point_name: ''
+experiment_id: '143117752039380188'
+lifecycle_stage: active
+run_id: 2d6aca43d8a74b41b3a138357f61022e
+run_name: ARIMA Kesehatan
+run_uuid: 2d6aca43d8a74b41b3a138357f61022e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748181797286
+status: 3
+tags: []
+user_id: LENOVO

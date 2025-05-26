@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748184542419
+current_stage: None
+description: ''
+last_updated_timestamp: 1748184542419
+name: SARIMA_Lainnya
+run_id: 61776973ba3a4d9ba2b8551200fcbcff
+run_link: ''
+source: mlflow-artifacts:/400420399144459576/61776973ba3a4d9ba2b8551200fcbcff/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/400420399144459576/61776973ba3a4d9ba2b8551200fcbcff/artifacts/model
+user_id: null
+version: 1

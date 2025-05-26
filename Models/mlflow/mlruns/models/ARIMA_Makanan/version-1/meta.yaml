@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748185693644
+current_stage: None
+description: ''
+last_updated_timestamp: 1748185693644
+name: ARIMA_Makanan
+run_id: a89a0a199c91474b85cdc9ddf7d92edc
+run_link: ''
+source: mlflow-artifacts:/682908953737905265/a89a0a199c91474b85cdc9ddf7d92edc/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/682908953737905265/a89a0a199c91474b85cdc9ddf7d92edc/artifacts/model
+user_id: null
+version: 1

@@ -1,0 +1,22 @@
+artifact_path: model
+flavors:
+  python_function:
+    artifacts:
+      model_path:
+        path: artifacts\holtwinters_model.pkl
+        uri: C:\Users\lapto\AppData\Local\Temp\tmpi0_bxrtl\holtwinters_model.pkl
+    cloudpickle_version: 3.0.0
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.5
+    streamable: false
+mlflow_version: 2.22.0
+model_size_bytes: 18774
+model_uuid: 8be342e5d0ab4704a16276775d781e22
+prompts: null
+run_id: efcbf078fe5444589b387d28fbbed586
+utc_time_created: '2025-05-25 14:29:40.901148'

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/116466315185901168/47ac60baa84e4dd1b82a5c62fd409da4/artifacts
+end_time: 1748186513686
+entry_point_name: ''
+experiment_id: '116466315185901168'
+lifecycle_stage: active
+run_id: 47ac60baa84e4dd1b82a5c62fd409da4
+run_name: Holt-Winters Transportasi
+run_uuid: 47ac60baa84e4dd1b82a5c62fd409da4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748186499685
+status: 3
+tags: []
+user_id: LENOVO

@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748186513508
+current_stage: None
+description: ''
+last_updated_timestamp: 1748186513508
+name: HoltWinters_Transportasi
+run_id: 47ac60baa84e4dd1b82a5c62fd409da4
+run_link: ''
+source: mlflow-artifacts:/116466315185901168/47ac60baa84e4dd1b82a5c62fd409da4/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/116466315185901168/47ac60baa84e4dd1b82a5c62fd409da4/artifacts/model
+user_id: null
+version: 1

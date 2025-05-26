@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748184425619
+current_stage: None
+description: ''
+last_updated_timestamp: 1748184425619
+name: ARIMA_Lainnya
+run_id: 878635f4310845ad86041cb91c911c71
+run_link: ''
+source: mlflow-artifacts:/537004642562468536/878635f4310845ad86041cb91c911c71/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/537004642562468536/878635f4310845ad86041cb91c911c71/artifacts/model
+user_id: null
+version: 1

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/682908953737905265/a89a0a199c91474b85cdc9ddf7d92edc/artifacts
+end_time: 1748185693874
+entry_point_name: ''
+experiment_id: '682908953737905265'
+lifecycle_stage: active
+run_id: a89a0a199c91474b85cdc9ddf7d92edc
+run_name: ARIMA Makanan
+run_uuid: a89a0a199c91474b85cdc9ddf7d92edc
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748185659248
+status: 3
+tags: []
+user_id: LENOVO

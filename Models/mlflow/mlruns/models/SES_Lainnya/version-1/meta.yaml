@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748184592204
+current_stage: None
+description: ''
+last_updated_timestamp: 1748184592204
+name: SES_Lainnya
+run_id: 804422f45ce54524b7a5aebcf3fa3a14
+run_link: ''
+source: mlflow-artifacts:/875500965884668835/804422f45ce54524b7a5aebcf3fa3a14/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/875500965884668835/804422f45ce54524b7a5aebcf3fa3a14/artifacts/model
+user_id: null
+version: 1

@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/429778467448712332/e15069b6a8ae45e9b9e444909d89b753/artifacts
+end_time: 1748185848553
+entry_point_name: ''
+experiment_id: '429778467448712332'
+lifecycle_stage: active
+run_id: e15069b6a8ae45e9b9e444909d89b753
+run_name: Holt-Winters Makanan
+run_uuid: e15069b6a8ae45e9b9e444909d89b753
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748185831306
+status: 3
+tags: []
+user_id: LENOVO

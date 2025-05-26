@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/537004642562468536/878635f4310845ad86041cb91c911c71/artifacts
+end_time: 1748184426926
+entry_point_name: ''
+experiment_id: '537004642562468536'
+lifecycle_stage: active
+run_id: 878635f4310845ad86041cb91c911c71
+run_name: ARIMA Lainnya
+run_uuid: 878635f4310845ad86041cb91c911c71
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748184399497
+status: 3
+tags: []
+user_id: LENOVO

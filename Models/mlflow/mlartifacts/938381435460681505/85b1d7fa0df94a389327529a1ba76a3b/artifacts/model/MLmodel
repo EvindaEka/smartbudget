@@ -1,0 +1,22 @@
+artifact_path: model
+flavors:
+  python_function:
+    artifacts:
+      model_path:
+        path: artifacts\holt_winters_model.pkl
+        uri: C:\Users\lapto\AppData\Local\Temp\tmplty8ajvk\holt_winters_model.pkl
+    cloudpickle_version: 3.0.0
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.5
+    streamable: false
+mlflow_version: 2.22.0
+model_size_bytes: 18691
+model_uuid: 60ec309025924b2d8f25c23449b818b9
+prompts: null
+run_id: 85b1d7fa0df94a389327529a1ba76a3b
+utc_time_created: '2025-05-25 13:25:19.424958'

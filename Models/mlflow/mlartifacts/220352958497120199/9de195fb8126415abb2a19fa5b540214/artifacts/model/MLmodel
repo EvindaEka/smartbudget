@@ -1,0 +1,22 @@
+artifact_path: model
+flavors:
+  python_function:
+    artifacts:
+      model_path:
+        path: artifacts\ses_model.pkl
+        uri: C:\Users\lapto\AppData\Local\Temp\tmpddrn33_n\ses_model.pkl
+    cloudpickle_version: 3.0.0
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.5
+    streamable: false
+mlflow_version: 2.22.0
+model_size_bytes: 18430
+model_uuid: fe41f78bb7de4e60b4deb1b57fd88e95
+prompts: null
+run_id: 9de195fb8126415abb2a19fa5b540214
+utc_time_created: '2025-05-25 14:06:25.244507'

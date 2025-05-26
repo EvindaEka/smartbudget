@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/575030929229620032/51a15337af274208b9e48869a0ecc377/artifacts
+end_time: 1748186414425
+entry_point_name: ''
+experiment_id: '575030929229620032'
+lifecycle_stage: active
+run_id: 51a15337af274208b9e48869a0ecc377
+run_name: SARIMA Transportasi
+run_uuid: 51a15337af274208b9e48869a0ecc377
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748186404889
+status: 3
+tags: []
+user_id: LENOVO

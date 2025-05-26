@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/144442796818990105/6033785d9b4e475fa82a409631721275/artifacts
+end_time: 1748173660179
+entry_point_name: ''
+experiment_id: '144442796818990105'
+lifecycle_stage: active
+run_id: 6033785d9b4e475fa82a409631721275
+run_name: thundering-gull-576
+run_uuid: 6033785d9b4e475fa82a409631721275
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748173652794
+status: 3
+tags: []
+user_id: LENOVO

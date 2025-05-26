@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/969986331080734817/1d85256363fe4a3ea430fdd6a25dd30f/artifacts
+end_time: 1748186552474
+entry_point_name: ''
+experiment_id: '969986331080734817'
+lifecycle_stage: active
+run_id: 1d85256363fe4a3ea430fdd6a25dd30f
+run_name: ARIMA Transportasi
+run_uuid: 1d85256363fe4a3ea430fdd6a25dd30f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748186543477
+status: 3
+tags: []
+user_id: LENOVO

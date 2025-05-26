@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/152383534479133121/5dd1edaa4d4745ff81fc1c49c2152a3f/artifacts
+end_time: 1748184164374
+entry_point_name: ''
+experiment_id: '152383534479133121'
+lifecycle_stage: active
+run_id: 5dd1edaa4d4745ff81fc1c49c2152a3f
+run_name: Holt-Winters Kesehatan v1
+run_uuid: 5dd1edaa4d4745ff81fc1c49c2152a3f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748184152407
+status: 3
+tags: []
+user_id: LENOVO

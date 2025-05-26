@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/832523953987162179/336711ab42e14cfbbe29507bca9c3a02/artifacts
+end_time: 1748181042177
+entry_point_name: ''
+experiment_id: '832523953987162179'
+lifecycle_stage: active
+run_id: 336711ab42e14cfbbe29507bca9c3a02
+run_name: Holt-Winters Kebutuhan Akademik
+run_uuid: 336711ab42e14cfbbe29507bca9c3a02
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748181031353
+status: 3
+tags: []
+user_id: LENOVO

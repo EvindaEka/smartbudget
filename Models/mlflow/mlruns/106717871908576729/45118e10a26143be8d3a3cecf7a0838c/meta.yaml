@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/106717871908576729/45118e10a26143be8d3a3cecf7a0838c/artifacts
+end_time: 1748185715741
+entry_point_name: ''
+experiment_id: '106717871908576729'
+lifecycle_stage: active
+run_id: 45118e10a26143be8d3a3cecf7a0838c
+run_name: SARIMA Makanan
+run_uuid: 45118e10a26143be8d3a3cecf7a0838c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748185701987
+status: 3
+tags: []
+user_id: LENOVO

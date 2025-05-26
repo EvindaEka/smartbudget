@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748185212193
+current_stage: None
+description: ''
+last_updated_timestamp: 1748185212193
+name: HoltWinters_Lainnya
+run_id: 590abeec8e344e418dc3415487499751
+run_link: ''
+source: mlflow-artifacts:/168998571412116742/590abeec8e344e418dc3415487499751/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/168998571412116742/590abeec8e344e418dc3415487499751/artifacts/model
+user_id: null
+version: 1

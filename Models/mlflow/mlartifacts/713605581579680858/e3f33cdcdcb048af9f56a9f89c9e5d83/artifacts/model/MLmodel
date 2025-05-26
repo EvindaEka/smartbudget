@@ -1,0 +1,22 @@
+artifact_path: model
+flavors:
+  python_function:
+    artifacts:
+      model_path:
+        path: artifacts\hw_model.pkl
+        uri: C:\Users\lapto\AppData\Local\Temp\tmpawd9igop\hw_model.pkl
+    cloudpickle_version: 3.0.0
+    code: null
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.11.5
+    streamable: false
+mlflow_version: 2.22.0
+model_size_bytes: 18799
+model_uuid: 798871d96f7446d6aa74764a94e72534
+prompts: null
+run_id: e3f33cdcdcb048af9f56a9f89c9e5d83
+utc_time_created: '2025-05-25 13:43:15.702624'

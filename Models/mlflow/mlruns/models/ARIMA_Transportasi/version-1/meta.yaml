@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748186400523
+current_stage: None
+description: ''
+last_updated_timestamp: 1748186400523
+name: ARIMA_Transportasi
+run_id: 614885ad08bb4c46810479f0e3d765a1
+run_link: ''
+source: mlflow-artifacts:/969986331080734817/614885ad08bb4c46810479f0e3d765a1/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/969986331080734817/614885ad08bb4c46810479f0e3d765a1/artifacts/model
+user_id: null
+version: 1

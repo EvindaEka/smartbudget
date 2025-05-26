@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748186414211
+current_stage: None
+description: ''
+last_updated_timestamp: 1748186414211
+name: SARIMA_Transportasi
+run_id: 51a15337af274208b9e48869a0ecc377
+run_link: ''
+source: mlflow-artifacts:/575030929229620032/51a15337af274208b9e48869a0ecc377/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/575030929229620032/51a15337af274208b9e48869a0ecc377/artifacts/model
+user_id: null
+version: 1

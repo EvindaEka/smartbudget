@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/400420399144459576/61776973ba3a4d9ba2b8551200fcbcff/artifacts
+end_time: 1748184542743
+entry_point_name: ''
+experiment_id: '400420399144459576'
+lifecycle_stage: active
+run_id: 61776973ba3a4d9ba2b8551200fcbcff
+run_name: SARIMA Lainnya
+run_uuid: 61776973ba3a4d9ba2b8551200fcbcff
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748184529693
+status: 3
+tags: []
+user_id: LENOVO

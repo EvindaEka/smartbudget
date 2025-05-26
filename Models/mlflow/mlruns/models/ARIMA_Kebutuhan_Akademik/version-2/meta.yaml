@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748181395495
+current_stage: None
+description: ''
+last_updated_timestamp: 1748181395495
+name: ARIMA_Kebutuhan_Akademik
+run_id: fa6e686041704c61af59c79a362bfd30
+run_link: ''
+source: mlflow-artifacts:/342553544962969878/fa6e686041704c61af59c79a362bfd30/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/342553544962969878/fa6e686041704c61af59c79a362bfd30/artifacts/model
+user_id: null
+version: 2
