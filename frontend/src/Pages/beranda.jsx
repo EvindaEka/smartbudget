@@ -4,13 +4,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
 
-// Asset imports
 import ProfilIcon from "../assets/Profil_1.png";
 import RpIcon from "../assets/Koin1.png";
 import PengeluaranIcon from "../assets/Pengeluaran icon.png";
 import PemasukanIcon from "../assets/Pemasukan Icon.png";
 
-// Variants for slide animation
 const pageVariants = {
   initial: { opacity: 0, y: -50 },
   in: { opacity: 1, y: 0 },
@@ -26,6 +24,9 @@ const pageTransition = {
 const Beranda = () => {
   const [transactions, setTransactions] = useState([]);
   const [showBalance, setShowBalance] = useState(false);
+  const [totalPemasukanTerbaru, setTotalPemasukanTerbaru] = useState(0);
+  const [totalPengeluaranTerbaru, setTotalPengeluaranTerbaru] = useState(0);
+  const [periode, setPeriode] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -62,9 +63,40 @@ const Beranda = () => {
           icon: PengeluaranIcon,
         }));
 
-        setTransactions([...pemasukanData, ...pengeluaranData]);
+        const allTransactions = [...pemasukanData, ...pengeluaranData];
+        setTransactions(allTransactions);
+
+        // Ambil bulan dari transaksi terakhir
+        const allOriginal = [...pemasukanRes.data.map((d) => ({ ...d, type: "pemasukan" })), ...pengeluaranRes.data.map((d) => ({ ...d, type: "pengeluaran" }))];
+        const latestTx = allOriginal.reduce((latest, item) => {
+          const date = new Date(item.tanggal);
+          return !latest || date > new Date(latest.tanggal) ? item : latest;
+        }, null);
+
+        if (!latestTx) return;
+
+        const latestDate = new Date(latestTx.tanggal);
+        const latestMonth = latestDate.getMonth();
+        const latestYear = latestDate.getFullYear();
+
+        const pemasukanTerbaru = pemasukanRes.data.filter((item) => {
+          const d = new Date(item.tanggal);
+          return d.getMonth() === latestMonth && d.getFullYear() === latestYear;
+        });
+
+        const pengeluaranTerbaru = pengeluaranRes.data.filter((item) => {
+          const d = new Date(item.tanggal);
+          return d.getMonth() === latestMonth && d.getFullYear() === latestYear;
+        });
+
+        setTotalPemasukanTerbaru(pemasukanTerbaru.reduce((sum, i) => sum + i.jumlah, 0));
+        setTotalPengeluaranTerbaru(pengeluaranTerbaru.reduce((sum, i) => sum + i.jumlah, 0));
+
+        const namaBulan = latestDate.toLocaleString("id-ID", { month: "long" });
+        const tahun = latestDate.getFullYear();
+        setPeriode(`${namaBulan} ${tahun}`);
       } catch (error) {
-        console.error("Gagal memuat data:", error);
+        console.error("Gagal mengambil data:", error);
       }
     };
 
@@ -96,7 +128,6 @@ const Beranda = () => {
           <img src={ProfilIcon} alt="Profil" className="w-8 h-8 rounded-full object-cover" />
           <div className="text-base font-semibold">Hai, Sahabat Smart</div>
         </div>
-
         <div className="flex gap-6 items-center">
           {[
             { path: "/beranda", label: "Beranda" },
@@ -133,29 +164,20 @@ const Beranda = () => {
         </div>
       </div>
 
-      {/* Ringkasan */}
+      {/* Ringkasan Bulanan Terakhir */}
       <div className="mx-6 flex justify-between gap-4 mb-4">
         <div className="flex-1 bg-white rounded-2xl p-4 shadow-md text-center">
-          <img
-            src={PengeluaranIcon}
-            alt="Pengeluaran"
-            className="w-20 h-20 mx-auto mb-2 object-contain"
-          />
-          <div className="text-sm text-gray-700 font-medium">Pengeluaran</div>
+          <img src={PengeluaranIcon} alt="Pengeluaran" className="w-20 h-20 mx-auto mb-2 object-contain" />
+          <div className="text-sm text-gray-700 font-medium">Pengeluaran {periode}</div>
           <div className="text-red-600 font-bold text-lg">
-            {totalPengeluaran.toLocaleString("id-ID")}
+            {totalPengeluaranTerbaru.toLocaleString("id-ID")}
           </div>
         </div>
-
         <div className="flex-1 bg-white rounded-2xl p-4 shadow-md text-center">
-          <img
-            src={PemasukanIcon}
-            alt="Pemasukan"
-            className="w-20 h-20 mx-auto mb-2 object-contain"
-          />
-          <div className="text-sm text-gray-700 font-medium">Pemasukan</div>
+          <img src={PemasukanIcon} alt="Pemasukan" className="w-20 h-20 mx-auto mb-2 object-contain" />
+          <div className="text-sm text-gray-700 font-medium">Pemasukan {periode}</div>
           <div className="text-green-600 font-bold text-lg">
-            {totalPemasukan.toLocaleString("id-ID")}
+            {totalPemasukanTerbaru.toLocaleString("id-ID")}
           </div>
         </div>
       </div>
