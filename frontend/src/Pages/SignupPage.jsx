@@ -1,154 +1,171 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import IconPemasukan from "../assets/pemasukaninput.png";
+import ProfilIcon from "../assets/Profil_1.png";
+import koin from "../assets/koin.png";
+import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 import axios from "axios";
-import Logo from "../assets/Logo.svg";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function SignupPage() {
+const pageVariants = {
+  initial: { opacity: 0, y: -50 },
+  in: { opacity: 1, y: 0 },
+  out: { opacity: 0, y: 50 },
+};
+
+const pageTransition = {
+  type: "tween",
+  ease: "easeInOut",
+  duration: 0.5,
+};
+
+export default function InputPemasukan({ onAddTransaction }) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   const [formData, setFormData] = useState({
-    nama: "",
-    email: "",
-    password: "",
-    jurusan: "",
-    universitas: "",
+    sumber: "",
+    jumlah: "",
+    tanggal: new Date().toISOString().slice(0, 10),
   });
 
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
-  const validateForm = () => {
-    const { nama, email, password, jurusan, universitas } = formData;
-
-    if (!nama || !email || !password || !jurusan || !universitas) {
-      return "Semua field wajib diisi.";
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return "Email harus valid (mengandung '@' dan '.')";
-    }
-
-    if (password.length < 8) {
-      return "Password minimal 8 karakter.";
-    }
-
-    if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
-      return "Password harus mengandung huruf dan angka.";
-    }
-
-    return null;
+  const formatRupiah = (value) => {
+    const numberString = value.replace(/\D/g, "");
+    return numberString ? Number(numberString).toLocaleString("id-ID") : "";
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError("");
-    setSuccess("");
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === "jumlah" ? formatRupiah(value) : value,
+    }));
   };
 
-  const handleSignup = async (e) => {
-    e.preventDefault();
-
-    const validationError = validateForm();
-    if (validationError) {
-      setError(validationError);
+  const handleSave = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("Anda belum login.");
       return;
     }
 
+    const numericJumlah = parseInt(formData.jumlah.replace(/\./g, ""));
+    if (!formData.sumber || isNaN(numericJumlah) || numericJumlah <= 0) {
+      toast.error("Mohon isi semua field dengan benar.");
+      return;
+    }
+
+    const payload = {
+      sumber: formData.sumber,
+      jumlah: numericJumlah,
+      tanggal: formData.tanggal,
+    };
+
     try {
-      const response = await axios.post("http://localhost:8000/auth/register", formData);
-      console.log("Register success:", response.data);
-      setSuccess("Registrasi berhasil! Silakan login.");
-      setFormData({
-        nama: "",
-        email: "",
-        password: "",
-        jurusan: "",
-        universitas: "",
+      const res = await axios.post("http://localhost:8000/pemasukan/", payload, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
-      // setTimeout(() => navigate("/login"), 5000); // Redirect setelah 10 detik
-    } catch (err) {
-      if (err.response?.data?.detail) {
-        setError(err.response.data.detail);
-      } else {
-        setError("Terjadi kesalahan saat mendaftar.");
+
+      toast.success("Pemasukan berhasil disimpan!");
+
+      if (onAddTransaction) {
+        onAddTransaction({ ...res.data, icon: IconPemasukan });
       }
+
+      navigate("/beranda");
+    } catch (err) {
+      console.error(err);
+      toast.error(err.response?.data?.detail || "Gagal menyimpan pemasukan.");
     }
   };
 
   return (
-    <div className="h-screen bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-white flex items-center justify-start gap-8 px-6 pl-35 flex-wrap">
-
-      <div className="flex items-center justify-center">
-        <img src={Logo} alt="Smart Budget Logo" className="w-[500px] h-auto" />
-      </div>
-      <div className="w-[400px] bg-[#e4f3ff] rounded-xl px-6 py-6 flex flex-col items-center justify-start shadow-lg">
-        <div className="w-full mt-2">
-          <h1 className="text-3xl font-bold text-[#1c1e4e] mb-1 text-center">Daftar</h1>
-          <p className="text-center mb-4 text-sm text-[#444]">Buat akun baru</p>
-
-          {error && <div className="text-red-600 text-sm mb-3 text-center">{error}</div>}
-          {success && <div className="text-green-600 text-sm mb-3 text-center">{success}</div>}
-
-          <form className="space-y-3" onSubmit={handleSignup}>
-            <input
-              type="text"
-              name="nama"
-              placeholder="Username"
-              value={formData.nama}
-              onChange={handleChange}
-              className="w-full px-5 py-2 rounded bg-[#a8ddf0] text-[#282f66] placeholder-[#282f66] outline-none text-sm"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full px-5 py-2 rounded bg-[#a8ddf0] text-[#282f66] placeholder-[#282f66] outline-none text-sm"
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full px-5 py-2 rounded bg-[#a8ddf0] text-[#282f66] placeholder-[#282f66] outline-none text-sm"
-            />
-            <input
-              type="text"
-              name="jurusan"
-              placeholder="Jurusan"
-              value={formData.jurusan}
-              onChange={handleChange}
-              className="w-full px-5 py-2 rounded bg-[#a8ddf0] text-[#282f66] placeholder-[#282f66] outline-none text-sm"
-            />
-            <input
-              type="text"
-              name="universitas"
-              placeholder="Universitas"
-              value={formData.universitas}
-              onChange={handleChange}
-              className="w-full px-5 py-2 rounded bg-[#a8ddf0] text-[#282f66] placeholder-[#282f66] outline-none text-sm"
-            />
-            <button
-              type="submit"
-              className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
-            >
-              Daftar
-            </button>
-          </form>
-
-          <p className="text-xs text-center mt-2 text-[#1c1e4e]">
-            Sudah punya akun?{" "}
+    <motion.div
+      className="relative min-h-screen flex flex-col bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-white overflow-hidden"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
+      {/* Navbar */}
+      <div className="bg-[#0077b6] text-white w-full px-6 py-4 shadow-md z-10 flex justify-between items-center text-sm font-medium">
+        <div className="flex items-center gap-3">
+          <img src={ProfilIcon} alt="Profil" className="w-8 h-8 rounded-full object-cover" />
+          <div className="text-base font-semibold">Hai, Sahabat Smart</div>
+        </div>
+        <div className="flex gap-6 items-center text-white">
+          {["beranda", "pemasukan", "pengeluaran", "analisis", "setting"].map((path) => (
             <span
-              onClick={() => navigate("/login")}
-              className="underline cursor-pointer text-[#282f66] hover:text-[#1f254d]"
+              key={path}
+              onClick={() => navigate(`/${path}`)}
+              className={`cursor-pointer hover:underline ${
+                currentPath === `/${path}` ? "underline font-bold" : ""
+              }`}
             >
-              Masuk
+              {path.charAt(0).toUpperCase() + path.slice(1)}
             </span>
-          </p>
+          ))}
         </div>
       </div>
-    </div>
+
+      {/* Background */}
+      <img
+        src={koin}
+        alt="koin-koin"
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-30 animate-bintang z-0"
+      />
+
+      {/* Form */}
+      <div className="relative w-full max-w-xl bg-white rounded-xl p-6 shadow-md z-10 mb-20 mx-auto mt-10">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Pemasukan</h2>
+
+        <select
+          name="sumber"
+          value={formData.sumber}
+          onChange={handleInputChange}
+          className="w-full mb-4 p-2 border rounded text-lg"
+        >
+          <option value="" disabled>
+            Pilih Kategori Pemasukan
+          </option>
+          <option value="Uang saku orangtua">Uang saku orangtua</option>
+          <option value="Gaji/upah">Gaji/upah</option>
+          <option value="Beasiswa">Beasiswa</option>
+          <option value="Lainnya">Lainnya</option>
+        </select>
+
+        <input
+          type="text"
+          name="jumlah"
+          placeholder="Jumlah Saldo"
+          value={formData.jumlah}
+          onChange={handleInputChange}
+          className="w-full mb-5 p-4 border rounded text-lg"
+          inputMode="numeric"
+        />
+
+        <label className="block mb-2 font-semibold text-gray-700 text-lg">Tanggal</label>
+        <input
+          type="date"
+          name="tanggal"
+          value={formData.tanggal}
+          onChange={handleInputChange}
+          className="w-full mb-4 p-2 border rounded text-lg"
+          max={new Date().toISOString().slice(0, 10)}
+        />
+
+        <button
+          onClick={handleSave}
+          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
+        >
+          Simpan
+        </button>
+      </div>
+    </motion.div>
   );
 }
