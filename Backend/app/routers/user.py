@@ -13,11 +13,6 @@ router = APIRouter(
     tags=["user"]
 )
 
-# @router.get("/me", response_model=UserOut)
-# def get_me(current_user: User = Depends(get_current_user)):
-#     return current_user
-
-
 @router.get("/saldo")
 def get_saldo(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
     user_id = current_user.id_user
