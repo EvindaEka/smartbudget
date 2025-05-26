@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import IconPengeluaran from "../assets/Pengeluaran icon inputan.png";
 import koin from "../assets/koin.png";
@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Animasi framer-motion
+// Animasi transisi framer-motion
 const pageVariants = {
   initial: { opacity: 0, y: -50 },
   in: { opacity: 1, y: 0 },
@@ -30,13 +30,6 @@ export default function InputPengeluaran() {
     amount: "",
     date: new Date().toISOString().slice(0, 10),
   });
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-  }, [navigate]);
 
   const formatNumber = (value) => {
     const numberString = value.replace(/\D/g, "");
@@ -79,7 +72,7 @@ export default function InputPengeluaran() {
         throw new Error(errorData.detail || "Gagal menyimpan pengeluaran");
       }
 
-      await response.json();
+      const result = await response.json();
       toast.success("Pengeluaran berhasil disimpan!");
       navigate("/beranda");
     } catch (error) {
@@ -103,36 +96,11 @@ export default function InputPengeluaran() {
           <div className="text-base font-semibold">Hai, Sahabat Smart</div>
         </div>
         <div className="flex gap-6 items-center text-white">
-          <span
-            onClick={() => navigate("/beranda")}
-            className={`cursor-pointer hover:underline ${currentPath === "/beranda" ? "underline font-bold" : ""}`}
-          >
-            Beranda
-          </span>
-          <span
-            onClick={() => navigate("/pemasukan")}
-            className={`cursor-pointer hover:underline ${currentPath === "/pemasukan" ? "underline font-bold" : ""}`}
-          >
-            Pemasukan
-          </span>
-          <span
-            onClick={() => navigate("/pengeluaran")}
-            className={`cursor-pointer hover:underline ${currentPath === "/pengeluaran" ? "underline font-bold" : ""}`}
-          >
-            Pengeluaran
-          </span>
-          <span
-            onClick={() => navigate("/analisis")}
-            className={`cursor-pointer hover:underline ${currentPath === "/analisis" ? "underline font-bold" : ""}`}
-          >
-            Analisis
-          </span>
-          <span
-            onClick={() => navigate("/setting")}
-            className={`cursor-pointer hover:underline ${currentPath === "/setting" ? "underline font-bold" : ""}`}
-          >
-            Tentang
-          </span>
+          <span onClick={() => navigate("/beranda")} className={`cursor-pointer hover:underline ${currentPath === "/beranda" ? "underline font-bold" : ""}`}>Beranda</span>
+          <span onClick={() => navigate("/pemasukan")} className={`cursor-pointer hover:underline ${currentPath === "/pemasukan" ? "underline font-bold" : ""}`}>Pemasukan</span>
+          <span onClick={() => navigate("/pengeluaran")} className={`cursor-pointer hover:underline ${currentPath === "/pengeluaran" ? "underline font-bold" : ""}`}>Pengeluaran</span>
+          <span onClick={() => navigate("/analisis")} className={`cursor-pointer hover:underline ${currentPath === "/analisis" ? "underline font-bold" : ""}`}>Analisis</span>
+          <span onClick={() => navigate("/setting")} className={`cursor-pointer hover:underline ${currentPath === "/setting" ? "underline font-bold" : ""}`}>Tentang</span>
         </div>
       </div>
 
@@ -141,7 +109,7 @@ export default function InputPengeluaran() {
 
       {/* Form Card */}
       <div className="relative w-full max-w-xl bg-white rounded-xl p-6 shadow-md z-10 mb-20 mx-auto mt-10">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Pengeluaran</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Input Pengeluaran</h2>
 
         <select
           name="category"
@@ -180,7 +148,7 @@ export default function InputPengeluaran() {
 
         <button
           onClick={handleAddTransaction}
-          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
+          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300"
         >
           Simpan
         </button>
