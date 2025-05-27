@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 # Ganti dengan koneksi sesuai kredensialmu
-DATABASE_URL = "postgresql://postgres:postgres@localhost:5432/smartbudget_db"
+DATABASE_URL = "postgresql://postgres:ovi123@localhost:5432/PBL_keuangan"
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
