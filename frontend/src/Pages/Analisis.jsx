@@ -1,6 +1,8 @@
 // Dashboard.jsx
 
 import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+
 import {
   PieChart,
   Pie,
@@ -14,6 +16,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import ProfilIcon from "../assets/Profil_1.png";
 
 const COLORS = ["#FFBB28", "#00C49F", "#FF8042", "#8884d8", "#8dd1e1", "#a4de6c"];
 const CATEGORIES = [
@@ -43,6 +46,10 @@ const CustomizedDot = (props) => {
 };
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentPath = location.pathname;
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState({
@@ -207,11 +214,43 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
-  if (loading) return <div className="p-6 text-center text-gray-700">Sedang memuat data...</div>;
-  if (error) return <div className="p-6 text-center text-red-600">Error: {error}</div>;
+  if (loading)
+    return (
+      <div className="p-6 text-center text-gray-700">Sedang memuat data...</div>
+    );
+  if (error)
+    return (
+      <div className="p-6 text-center text-red-600">Error: {error}</div>
+    );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-white p-6 font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-white pt-24 px-6 font-sans">
+      {/* Navbar */}
+      <div className="bg-[#0077b6] text-white w-full px-6 py-4 shadow-md z-50 flex justify-between items-center text-sm font-medium fixed top-0 left-0">
+        <div className="flex items-center gap-3 z-10">
+          <img src={ProfilIcon} alt="Profil" className="w-8 h-8 rounded-full object-cover" />
+          <div className="text-base font-semibold">Hai, Sahabat Smart</div>
+        </div>
+        <div className="flex gap-6 items-center">
+          {[
+            { path: "/beranda", label: "Beranda" },
+            { path: "/pemasukan", label: "Pemasukan" },
+            { path: "/pengeluaran", label: "Pengeluaran" },
+            { path: "/analisis", label: "Analisis" },
+            { path: "/setting", label: "Tentang" },
+          ].map(({ path, label }) => (
+            <span
+              key={path}
+              onClick={() => navigate(path)}
+              className={`cursor-pointer hover:underline ${
+                currentPath === path ? "underline font-bold" : ""
+              }`}
+            >
+              {label}
+            </span>
+          ))}
+        </div>
+      </div>
       <h1 className="text-3xl font-bold mb-6 text-center text-white drop-shadow-lg">Dashboard</h1>
 
       <div className="bg-white p-6 rounded-lg shadow text-center w-full mb-6">

@@ -145,3 +145,45 @@ def get_pemasukan_terbaru_periode(
         raise HTTPException(status_code=400, detail="Tipe tidak valid")
 
     return results
+
+@router.get("/per-bulan", response_model=List[PemasukanOut], summary="Daftar pemasukan berdasarkan nama bulan dan tahun tertentu")
+def get_pemasukan_per_bulan(
+    bulan: str = Query(..., description="Nama bulan, contoh: januari"),
+    tahun: int = Query(..., ge=2000, description="Tahun (minimal 2000)"),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    nama_bulan_ke_angka = {
+        "januari": 1,
+        "februari": 2,
+        "maret": 3,
+        "april": 4,
+        "mei": 5,
+        "juni": 6,
+        "juli": 7,
+        "agustus": 8,
+        "september": 9,
+        "oktober": 10,
+        "november": 11,
+        "desember": 12
+    }
+
+    bulan_lower = bulan.lower()
+    if bulan_lower not in nama_bulan_ke_angka:
+        raise HTTPException(status_code=400, detail="Nama bulan tidak valid. Gunakan nama bulan lengkap seperti 'januari'.")
+
+    bulan_ke = nama_bulan_ke_angka[bulan_lower]
+
+    hasil = db.query(Pemasukan)\
+        .filter(
+            Pemasukan.id_user == current_user.id_user,
+            extract("month", Pemasukan.tanggal) == bulan_ke,
+            extract("year", Pemasukan.tanggal) == tahun
+        )\
+        .order_by(Pemasukan.tanggal.desc(), Pemasukan.id_pemasukan.desc())\
+        .all()
+
+    if not hasil:
+        raise HTTPException(status_code=404, detail=f"Tidak ada pemasukan ditemukan untuk bulan {bulan} tahun {tahun}")
+
+    return hasil
