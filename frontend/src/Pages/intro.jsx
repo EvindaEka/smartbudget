@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import introImage from "../assets/Logo.svg";
 
+// Animasi mengambang
 const floatKeyframes = `
   @keyframes float {
     0%, 100% {
@@ -31,7 +32,7 @@ export default function Intro() {
         style={{ backgroundColor: "#0077b6" }}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Logo navbar (tidak bergerak) */}
+          {/* Logo */}
           <div
             onClick={() => navigate("/")}
             className="text-2xl font-bold text-white cursor-pointer select-none"
@@ -94,16 +95,16 @@ export default function Intro() {
         </div>
       </nav>
 
-      {/* Intro Content */}
+      {/* Konten Intro */}
       <div
         className="pt-24 min-h-screen bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-white flex items-center justify-center px-6"
         style={{ height: "100vh", overflow: "hidden" }}
       >
         <div className="max-w-7xl w-full flex flex-col md:flex-row items-center justify-between">
-          {/* Left Text */}
+          {/* Teks kiri */}
           <div className="text-center md:text-left max-w-xl pl-20 md:pl-0 md:ml-25">
             <h1
-              className="text-5xxl font-bold text-gray-800 mb-4 font-alfa slab one"
+              className="text-5xl font-bold text-gray-800 mb-4 font-alfa slab one"
               style={floatAnimation}
             >
               Smart Budget
@@ -116,7 +117,7 @@ export default function Intro() {
             </p>
           </div>
 
-          {/* Right Image */}
+          {/* Gambar kanan */}
           <div className="mt-10 md:mt-0 md:ml-12">
             <img
               src={introImage}

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+
 import {
   PieChart,
   Pie,
@@ -15,7 +16,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import ProfilIcon from "../assets/Profil_1.png"; // Ganti dengan path sebenarnya
+import ProfilIcon from "../assets/Profil_1.png";
 
 const COLORS = ["#FFBB28", "#00C49F", "#FF8042", "#8884d8", "#8dd1e1", "#a4de6c"];
 const CATEGORIES = [
@@ -44,13 +45,11 @@ const CustomizedDot = (props) => {
   );
 };
 
-// HAPUS komponen Navbar sebelumnya
-
 export default function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
-
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState({
@@ -225,7 +224,7 @@ export default function Dashboard() {
     );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-white p-6 pt-20 font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-[#5DB7FF] via-[#A7DCFF] to-white pt-24 px-6 font-sans">
       {/* Navbar */}
       <div className="bg-[#0077b6] text-white w-full px-6 py-4 shadow-md z-50 flex justify-between items-center text-sm font-medium fixed top-0 left-0">
         <div className="flex items-center gap-3 z-10">
@@ -252,30 +251,21 @@ export default function Dashboard() {
           ))}
         </div>
       </div>
-
-      <h1 className="text-3xl font-bold mb-6 text-center text-white drop-shadow-lg">
-        Dashboard
-      </h1>
+      <h1 className="text-3xl font-bold mb-6 text-center text-white drop-shadow-lg">Dashboard</h1>
 
       <div className="bg-white p-6 rounded-lg shadow text-center w-full mb-6">
         <p className="text-gray-600 mb-2 text-xl font-medium">Saldo</p>
-        <p className="text-green-600 text-4xl font-bold">
-          {formatRupiah(data.saldo)}
-        </p>
+        <p className="text-green-600 text-4xl font-bold">{formatRupiah(data.saldo)}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
         <div className="bg-white p-6 rounded-lg shadow text-center">
           <p className="text-gray-600 mb-2">Total Pemasukan</p>
-          <p className="text-blue-600 text-3xl font-bold">
-            {formatRupiah(data.totalPemasukan)}
-          </p>
+          <p className="text-blue-600 text-3xl font-bold">{formatRupiah(data.totalPemasukan)}</p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow text-center">
           <p className="text-gray-600 mb-2">Total Pengeluaran</p>
-          <p className="text-red-500 text-3xl font-bold">
-            {formatRupiah(data.totalPengeluaran)}
-          </p>
+          <p className="text-red-500 text-3xl font-bold">{formatRupiah(data.totalPengeluaran)}</p>
         </div>
       </div>
 
@@ -283,150 +273,174 @@ export default function Dashboard() {
         {/* PieChart Pengeluaran */}
         <div className="bg-white p-4 rounded-lg shadow text-center">
           <p className="font-semibold mb-4">Pengeluaran per Kategori</p>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={data.kategoriPengeluaran}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={100}
-                label={({ name, percent }) =>
-                  `${name}: ${(percent * 100).toFixed(0)}%`
-                }
-              >
-                {data.kategoriPengeluaran.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip formatter={(value) => formatRupiah(value)} />
-            </PieChart>
-          </ResponsiveContainer>
+          {data.kategoriPengeluaran.length > 0 ? (
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={data.kategoriPengeluaran}
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={100}
+                  dataKey="value"
+                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  labelLine={false}
+                >
+                  {data.kategoriPengeluaran.map((entry, index) => (
+                    <Cell key={`cell-pie-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip formatter={(value) => formatRupiah(value)} />
+              </PieChart>
+            </ResponsiveContainer>
+          ) : (
+            <p className="text-gray-500">Tidak ada data kategori pengeluaran.</p>
+          )}
         </div>
 
         {/* PieChart Pemasukan */}
         <div className="bg-white p-4 rounded-lg shadow text-center">
           <p className="font-semibold mb-4">Pemasukan per Sumber</p>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={data.pemasukanPerSumber}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                outerRadius={100}
-                label={({ name, percent }) =>
-                  `${name}: ${(percent * 100).toFixed(0)}%`
-                }
-              >
-                {data.pemasukanPerSumber.map((entry, index) => (
-                  <Cell
-                    key={`cell-pemasukan-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip formatter={(value) => formatRupiah(value)} />
-            </PieChart>
-          </ResponsiveContainer>
+          {data.pemasukanPerSumber.length > 0 ? (
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={data.pemasukanPerSumber}
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={100}
+                  dataKey="value"
+                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  labelLine={false}
+                >
+                  {data.pemasukanPerSumber.map((entry, index) => (
+                    <Cell key={`cell-pie-in-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip formatter={(value) => formatRupiah(value)} />
+              </PieChart>
+            </ResponsiveContainer>
+          ) : (
+            <p className="text-gray-500">Tidak ada data pemasukan.</p>
+          )}
         </div>
       </div>
 
-      {/* Grafik Prediksi Total Pengeluaran */}
-      <div className="bg-white p-6 rounded-lg shadow mb-10">
-        <h2 className="text-xl font-semibold mb-4 text-center">
-          Prediksi Total Pengeluaran per Bulan
-        </h2>
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart data={data.prediksiTotal}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="bulan" />
-            <YAxis
-              tickFormatter={(value) =>
-                value >= 1000
-                  ? `Rp${(value / 1000).toFixed(0)}K`
-                  : `Rp${value}`
-              }
-            />
-            <Tooltip formatter={(value) => formatRupiah(value)} />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="pengeluaran"
-              stroke="#FF7300"
-              dot={<CustomizedDot data={data.prediksiTotal} />}
-              activeDot={{ r: 8 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+      {/* Grafik Total dan Prediksi */}
+      <div className="bg-white p-6 rounded-lg shadow text-center mb-12">
+        <p className="font-semibold mb-4 text-lg">Grafik Total Pengeluaran dan Prediksi</p>
+        {data.prediksiTotal.length > 0 ? (
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={data.prediksiTotal}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="bulan" />
+              <YAxis tickFormatter={(value) => value.toLocaleString("id-ID")} />
+              <Tooltip formatter={(value) => formatRupiah(value)} />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="pengeluaran"
+                stroke="#8884d8"
+                dot={(dotProps) => (
+                  <CustomizedDot {...dotProps} data={data.prediksiTotal} stroke="#8884d8" />
+                )}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        ) : (
+          <p className="text-gray-500">Tidak ada data prediksi total pengeluaran.</p>
+        )}
       </div>
 
-      {/* Grafik Prediksi per Kategori */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {CATEGORIES.map((kategori) => (
-          <div key={kategori} className="bg-white p-6 rounded-lg shadow">
-            <h3 className="text-lg font-semibold mb-4 text-center">{kategori}</h3>
-            <ResponsiveContainer width="100%" height={250}>
-              <LineChart
-                data={data.prediksiPerKategori[kategori] || []}
-                margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-              >
+      {/* Grafik per Kategori */}
+<div className="mb-12">
+  <p className="font-semibold mb-4 text-lg text-center">
+    Grafik Prediksi Pengeluaran per Kategori
+  </p>
+  {Object.keys(data.prediksiPerKategori).length > 0 ? (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      {CATEGORIES.map((kategori, idx) => (
+        <div
+          key={kategori}
+          className={`bg-white p-6 rounded-lg shadow ${
+            kategori === "Lainnya" ? "md:col-span-2" : ""
+          }`}
+        >
+          <p className="font-semibold mb-4">{kategori}</p>
+          {data.prediksiPerKategori[kategori].length > 0 ? (
+            <ResponsiveContainer width="100%" height={kategori === "Lainnya" ? 300 : 250}>
+              <LineChart data={data.prediksiPerKategori[kategori]}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="bulan" />
-                <YAxis
-                  tickFormatter={(value) =>
-                    value >= 1000
-                      ? `Rp${(value / 1000).toFixed(0)}K`
-                      : `Rp${value}`
-                  }
-                />
+                <YAxis tickFormatter={(value) => value.toLocaleString("id-ID")} />
                 <Tooltip formatter={(value) => formatRupiah(value)} />
-                <Legend />
                 <Line
                   type="monotone"
                   dataKey="pengeluaran"
-                  stroke="#8884d8"
-                  dot={<CustomizedDot data={data.prediksiPerKategori[kategori] || []} />}
-                  activeDot={{ r: 8 }}
+                  stroke={COLORS[idx % COLORS.length]}
+                  dot={(dotProps) => (
+                    <CustomizedDot
+                      {...dotProps}
+                      data={data.prediksiPerKategori[kategori]}
+                      stroke={COLORS[idx % COLORS.length]}
+                    />
+                  )}
                 />
               </LineChart>
             </ResponsiveContainer>
-          </div>
-        ))}
-      </div>
+          ) : (
+            <p className="text-gray-500">Tidak ada data prediksi kategori ini.</p>
+          )}
+        </div>
+      ))}
+    </div>
+  ) : (
+    <p className="text-center text-gray-500">
+      Tidak ada data prediksi per kategori.
+    </p>
+  )}
+</div>
 
-      {/* Grafik Pengeluaran Kos dan Internet */}
-      <div className="bg-white p-6 rounded-lg shadow mt-10">
-        <h2 className="text-xl font-semibold mb-4 text-center">
-          Pengeluaran Kos dan Paket Internet per Bulan
-        </h2>
-        <ResponsiveContainer width="100%" height={300}>
-          <LineChart
-            data={pengeluaranKos.map((item, idx) => ({
-              ...item,
-              internet: pengeluaranInternet[idx]?.total || 0,
-            }))}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="bulan" />
-            <YAxis
-              tickFormatter={(value) =>
-                value >= 1000
-                  ? `Rp${(value / 1000).toFixed(0)}K`
-                  : `Rp${value}`
-              }
-            />
-            <Tooltip formatter={(value) => formatRupiah(value)} />
-            <Legend />
-            <Line type="monotone" dataKey="total" stroke="#82ca9d" name="Kos" />
-            <Line type="monotone" dataKey="internet" stroke="#8884d8" name="Internet" />
-          </LineChart>
-        </ResponsiveContainer>
+
+      {/* Grafik Kos & Internet */}
+      <div>
+        <p className="font-semibold mb-4 text-lg text-center">
+          Pengeluaran Bulanan Kos dan Internet
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="bg-white p-6 rounded-lg shadow text-center">
+            <p className="font-semibold mb-4">Pengeluaran Kos Bulanan</p>
+            {pengeluaranKos.length > 0 ? (
+              <ResponsiveContainer width="100%" height={250}>
+                <LineChart data={pengeluaranKos}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="bulan" />
+                  <YAxis tickFormatter={(value) => value.toLocaleString("id-ID")} />
+                  <Tooltip formatter={(value) => formatRupiah(value)} />
+                  <Line type="monotone" dataKey="total" stroke="#FF8042" dot={{ r: 4 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <p className="text-gray-500">Tidak ada data pengeluaran kos.</p>
+            )}
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow text-center">
+            <p className="font-semibold mb-4">Pengeluaran Paket Internet Bulanan</p>
+            {pengeluaranInternet.length > 0 ? (
+              <ResponsiveContainer width="100%" height={250}>
+                <LineChart data={pengeluaranInternet}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="bulan" />
+                  <YAxis tickFormatter={(value) => value.toLocaleString("id-ID")} />
+                  <Tooltip formatter={(value) => formatRupiah(value)} />
+                  <Line type="monotone" dataKey="total" stroke="#00C49F" dot={{ r: 4 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              <p className="text-gray-500">Tidak ada data pengeluaran internet.</p>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

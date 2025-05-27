@@ -3,6 +3,8 @@ import { IoIosEye } from "react-icons/io";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import ProfilIcon from "../assets/Profil_1.png";
 import RpIcon from "../assets/Koin1.png";
@@ -24,25 +26,29 @@ const pageTransition = {
 const Beranda = () => {
   const [transactions, setTransactions] = useState([]);
   const [showBalance, setShowBalance] = useState(false);
-  const [saldoTahunan, setSaldoTahunan] = useState(null);
+  const [totalPemasukanTerbaru, setTotalPemasukanTerbaru] = useState(0);
+  const [totalPengeluaranTerbaru, setTotalPengeluaranTerbaru] = useState(0);
   const [periode, setPeriode] = useState("");
+  const [selectedMonth, setSelectedMonth] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
+
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const headers = { Authorization: `Bearer ${token}` };
-
-        const [pemasukanRes, pengeluaranRes, saldoRes] = await Promise.all([
-          axios.get("http://127.0.0.1:8000/pemasukan/list", { headers }),
-          axios.get("http://127.0.0.1:8000/pengeluaran/list", { headers }),
-          axios.get("http://127.0.0.1:8000/user/saldo", { headers }),
+        const [pemasukanRes, pengeluaranRes] = await Promise.all([
+          axios.get("http://127.0.0.1:8000/pemasukan/list", {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+          axios.get("http://127.0.0.1:8000/pengeluaran/list", {
+            headers: { Authorization: `Bearer ${token}` },
+          }),
         ]);
 
-        const pemasukan = pemasukanRes.data.map((item) => ({
+        const pemasukanData = pemasukanRes.data.map((item) => ({
           id: item.id,
           type: "pemasukan",
           category: item.sumber,
@@ -51,7 +57,7 @@ const Beranda = () => {
           icon: PemasukanIcon,
         }));
 
-        const pengeluaran = pengeluaranRes.data.map((item) => ({
+        const pengeluaranData = pengeluaranRes.data.map((item) => ({
           id: item.id,
           type: "pengeluaran",
           category: item.kategori,
@@ -60,32 +66,51 @@ const Beranda = () => {
           icon: PengeluaranIcon,
         }));
 
-        const allTx = [...pemasukan, ...pengeluaran];
-        const sortedTx = allTx.sort(
-          (a, b) => new Date(b.date) - new Date(a.date)
-        );
+        const allTransactions = [...pemasukanData, ...pengeluaranData];
+        setTransactions(allTransactions);
 
-        const latest = sortedTx[0];
-        const latestDate = new Date(latest.date);
-        const latestMonth = latestDate.getMonth();
-        const latestYear = latestDate.getFullYear();
-
-        const latestMonthTx = sortedTx.filter((t) => {
-          const d = new Date(t.date);
-          return d.getMonth() === latestMonth && d.getFullYear() === latestYear;
-        });
-
-        const namaBulan = latestDate.toLocaleString("id-ID", { month: "long" });
-        setPeriode(`${namaBulan} ${latestYear}`);
-        setTransactions(latestMonthTx);
-        setSaldoTahunan(saldoRes.data.saldo);
-      } catch (err) {
-        console.error("Gagal memuat data:", err);
+        if (allTransactions.length > 0) {
+          const latestDate = new Date(
+            Math.max(...allTransactions.map((t) => new Date(t.date)))
+          );
+          setSelectedMonth({
+            month: latestDate.getMonth(),
+            year: latestDate.getFullYear(),
+          });
+        }
+      } catch (error) {
+        console.error("Gagal mengambil data:", error);
       }
     };
 
     fetchData();
   }, [token]);
+
+  useEffect(() => {
+    if (!selectedMonth) return;
+
+    const pemasukanTerbaru = transactions
+      .filter((t) => t.type === "pemasukan")
+      .filter((t) => {
+        const d = new Date(t.date);
+        return d.getMonth() === selectedMonth.month && d.getFullYear() === selectedMonth.year;
+      });
+
+    const pengeluaranTerbaru = transactions
+      .filter((t) => t.type === "pengeluaran")
+      .filter((t) => {
+        const d = new Date(t.date);
+        return d.getMonth() === selectedMonth.month && d.getFullYear() === selectedMonth.year;
+      });
+
+    setTotalPemasukanTerbaru(pemasukanTerbaru.reduce((sum, i) => sum + i.amount, 0));
+    setTotalPengeluaranTerbaru(pengeluaranTerbaru.reduce((sum, i) => sum + i.amount, 0));
+
+    const namaBulan = new Date(selectedMonth.year, selectedMonth.month).toLocaleString("id-ID", {
+      month: "long",
+    });
+    setPeriode(`${namaBulan} ${selectedMonth.year}`);
+  }, [selectedMonth, transactions]);
 
   const totalPemasukan = transactions
     .filter((t) => t.type === "pemasukan")
@@ -94,6 +119,8 @@ const Beranda = () => {
   const totalPengeluaran = transactions
     .filter((t) => t.type === "pengeluaran")
     .reduce((sum, t) => sum + t.amount, 0);
+
+  const totalSaldo = totalPemasukan - totalPengeluaran;
 
   return (
     <motion.div
@@ -131,14 +158,12 @@ const Beranda = () => {
         </div>
       </div>
 
-      {/* Saldo Tahunan */}
+      {/* Saldo */}
       <div className="mx-6 mt-6 mb-4 bg-white rounded-full px-6 py-2 flex justify-between items-center shadow">
-        <div className="text-sm font-medium text-gray-800">Saldo tahun ini</div>
+        <div className="text-sm font-medium text-gray-800">Saldo uangmu</div>
         <div className="flex items-center gap-2">
           <span className="tracking-widest text-base font-bold">
-            {showBalance && saldoTahunan !== null
-              ? saldoTahunan.toLocaleString("id-ID")
-              : "●●●●●●"}
+            {showBalance ? totalSaldo.toLocaleString("id-ID") : "●●●●●●"}
           </span>
           <IoIosEye
             className="text-xl text-gray-700 cursor-pointer"
@@ -148,52 +173,78 @@ const Beranda = () => {
         </div>
       </div>
 
-      {/* Ringkasan Bulan */}
+      {/* Pilihan Bulan */}
+      <div className="mx-6 mb-4">
+        <label className="mr-2 font-medium text-sm text-gray-700">Pilih Bulan:</label>
+        <DatePicker
+          selected={
+            selectedMonth
+              ? new Date(selectedMonth.year, selectedMonth.month)
+              : null
+          }
+          onChange={(date) => {
+            setSelectedMonth({
+              month: date.getMonth(),
+              year: date.getFullYear(),
+            });
+          }}
+          dateFormat="MM/yyyy"
+          showMonthYearPicker
+          className="w-40 px-4 py-2 rounded-full border border-gray-300 shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      {/* Ringkasan Bulanan */}
       <div className="mx-6 flex justify-between gap-4 mb-4">
         <div className="flex-1 bg-white rounded-2xl p-4 shadow-md text-center">
-          <img src={PengeluaranIcon} alt="Pengeluaran" className="w-20 h-20 mx-auto mb-2" />
+          <img src={PengeluaranIcon} alt="Pengeluaran" className="w-20 h-20 mx-auto mb-2 object-contain" />
           <div className="text-sm text-gray-700 font-medium">Pengeluaran {periode}</div>
           <div className="text-red-600 font-bold text-lg">
-            {totalPengeluaran.toLocaleString("id-ID")}
+            {totalPengeluaranTerbaru.toLocaleString("id-ID")}
           </div>
         </div>
         <div className="flex-1 bg-white rounded-2xl p-4 shadow-md text-center">
-          <img src={PemasukanIcon} alt="Pemasukan" className="w-20 h-20 mx-auto mb-2" />
+          <img src={PemasukanIcon} alt="Pemasukan" className="w-20 h-20 mx-auto mb-2 object-contain" />
           <div className="text-sm text-gray-700 font-medium">Pemasukan {periode}</div>
           <div className="text-green-600 font-bold text-lg">
-            {totalPemasukan.toLocaleString("id-ID")}
+            {totalPemasukanTerbaru.toLocaleString("id-ID")}
           </div>
         </div>
       </div>
 
-      {/* Riwayat Transaksi Bulan Ini */}
-      <div className="mx-6 bg-white rounded-2xl p-4 shadow-md mb-6">
-        <h2 className="text-lg font-bold text-gray-800 mb-4">
-          Riwayat Transaksi Bulan {periode}
-        </h2>
-        {transactions.map((tx) => (
-          <div key={tx.id} className="flex justify-between items-center mb-4">
-            <div className="flex items-center gap-4">
-              <img src={tx.icon} alt={tx.category} className="w-8 h-8" />
-              <div>
-                <div className="text-sm font-semibold text-[#1F77B4] bg-[#C5F1FF] inline-block px-3 py-1 rounded-full mb-1">
-                  {tx.date}
-                </div>
-                <div className="text-base font-semibold text-gray-900">
-                  {tx.category}
+      {/* Transaksi Terbaru */}
+      <div className="mx-6 bg-white rounded-2xl p-4 shadow-md relative flex-1 overflow-y-auto">
+        {[...transactions]
+          .filter((tx) => {
+            const d = new Date(tx.date);
+            return (
+              selectedMonth &&
+              d.getMonth() === selectedMonth.month &&
+              d.getFullYear() === selectedMonth.year
+            );
+          })
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .map((tx) => (
+            <div key={tx.id} className="flex justify-between items-center mb-6">
+              <div className="flex items-center gap-4">
+                <img src={tx.icon} alt={tx.category} className="w-8 h-8" />
+                <div>
+                  <div className="text-sm font-semibold text-[#1F77B4] bg-[#C5F1FF] inline-block px-3 py-1 rounded-full mb-1">
+                    {tx.date}
+                  </div>
+                  <div className="text-base font-semibold text-gray-900">{tx.category}</div>
                 </div>
               </div>
+              <div
+                className={`font-bold text-base ${
+                  tx.type === "pemasukan" ? "text-green-700" : "text-red-700"
+                }`}
+              >
+                {tx.type === "pemasukan" ? "+" : "-"}
+                {tx.amount.toLocaleString("id-ID")}
+              </div>
             </div>
-            <div
-              className={`font-bold text-base ${
-                tx.type === "pemasukan" ? "text-green-700" : "text-red-700"
-              }`}
-            >
-              {tx.type === "pemasukan" ? "+" : "-"}
-              {tx.amount.toLocaleString("id-ID")}
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </motion.div>
   );
