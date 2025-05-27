@@ -109,7 +109,7 @@ export default function InputPengeluaran() {
 
       {/* Form Card */}
       <div className="relative w-full max-w-xl bg-white rounded-xl p-6 shadow-md z-10 mb-20 mx-auto mt-10">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Input Pengeluaran</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center">Pengeluaran</h2>
 
         <select
           name="category"
@@ -148,7 +148,7 @@ export default function InputPengeluaran() {
 
         <button
           onClick={handleAddTransaction}
-          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300"
+          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
         >
           Simpan
         </button>

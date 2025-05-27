@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import Base, engine
-from app.routers import auth, pemasukan, user, pengeluaran, dashboard
+from app.routers import auth, pemasukan, user, pengeluaran, dashboard, clustering
 
 # Inisialisasi semua tabel dari model
 Base.metadata.create_all(bind=engine)
@@ -28,6 +28,7 @@ app.include_router(pemasukan.router)
 app.include_router(pengeluaran.router)
 app.include_router(user.router)
 app.include_router(dashboard.router)
+app.include_router(clustering.router)
 
 # Endpoint default
 @app.get("/")
