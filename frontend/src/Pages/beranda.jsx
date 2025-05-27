@@ -29,10 +29,7 @@ const Beranda = () => {
   const [totalPemasukanTerbaru, setTotalPemasukanTerbaru] = useState(0);
   const [totalPengeluaranTerbaru, setTotalPengeluaranTerbaru] = useState(0);
   const [periode, setPeriode] = useState("");
-<<<<<<< HEAD
-=======
   const [selectedMonth, setSelectedMonth] = useState(null);
->>>>>>> 1033805b2352c72c860d3254089b012a33580211
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -176,9 +173,6 @@ const Beranda = () => {
         </div>
       </div>
 
-<<<<<<< HEAD
-      {/* Ringkasan Bulanan Terakhir */}
-=======
       {/* Pilihan Bulan */}
       <div className="mx-6 mb-4">
         <label className="mr-2 font-medium text-sm text-gray-700">Pilih Bulan:</label>
@@ -201,7 +195,6 @@ const Beranda = () => {
       </div>
 
       {/* Ringkasan Bulanan */}
->>>>>>> 1033805b2352c72c860d3254089b012a33580211
       <div className="mx-6 flex justify-between gap-4 mb-4">
         <div className="flex-1 bg-white rounded-2xl p-4 shadow-md text-center">
           <img src={PengeluaranIcon} alt="Pengeluaran" className="w-20 h-20 mx-auto mb-2 object-contain" />
