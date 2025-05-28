@@ -30,6 +30,7 @@ const Beranda = () => {
   const [totalPengeluaranTerbaru, setTotalPengeluaranTerbaru] = useState(0);
   const [periode, setPeriode] = useState("");
   const [selectedMonth, setSelectedMonth] = useState(null);
+  const [kategoriKebiasaan, setKategoriKebiasaan] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
@@ -112,6 +113,41 @@ const Beranda = () => {
     setPeriode(`${namaBulan} ${selectedMonth.year}`);
   }, [selectedMonth, transactions]);
 
+  useEffect(() => {
+    if (!selectedMonth) return;
+
+    const fetchClusterLabel = async () => {
+      try {
+        const res = await axios.get("http://127.0.0.1:8000/clustering/prediksi", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            bulan: selectedMonth.month + 1,
+            tahun: selectedMonth.year,
+          },
+        });
+
+        if (res.data?.message) {
+          console.warn("Info:", res.data.message);
+          setKategoriKebiasaan("-");
+          return;
+        }
+
+        if (res.data?.label) {
+          setKategoriKebiasaan(res.data.label.toLowerCase());
+        } else {
+          setKategoriKebiasaan("-");
+        }
+      } catch (error) {
+        console.error("Gagal mengambil label cluster:", error);
+        setKategoriKebiasaan("-");
+      }
+    };
+
+    fetchClusterLabel();
+  }, [token, selectedMonth]);
+
   const totalPemasukan = transactions
     .filter((t) => t.type === "pemasukan")
     .reduce((sum, t) => sum + t.amount, 0);
@@ -138,13 +174,7 @@ const Beranda = () => {
           <div className="text-base font-semibold">Hai, Sahabat Smart</div>
         </div>
         <div className="flex gap-6 items-center">
-          {[
-            { path: "/beranda", label: "Beranda" },
-            { path: "/pemasukan", label: "Pemasukan" },
-            { path: "/pengeluaran", label: "Pengeluaran" },
-            { path: "/analisis", label: "Analisis" },
-            { path: "/setting", label: "Tentang" },
-          ].map(({ path, label }) => (
+          {["/beranda", "/pemasukan", "/pengeluaran", "/analisis", "/setting"].map((path, i) => (
             <span
               key={path}
               onClick={() => navigate(path)}
@@ -152,7 +182,7 @@ const Beranda = () => {
                 currentPath === path ? "underline font-bold" : ""
               }`}
             >
-              {label}
+              {["Beranda", "Pemasukan", "Pengeluaran", "Analisis", "Tentang"][i]}
             </span>
           ))}
         </div>
@@ -165,33 +195,40 @@ const Beranda = () => {
           <span className="tracking-widest text-base font-bold">
             {showBalance ? totalSaldo.toLocaleString("id-ID") : "●●●●●●"}
           </span>
-          <IoIosEye
-            className="text-xl text-gray-700 cursor-pointer"
-            onClick={() => setShowBalance(!showBalance)}
-          />
+          <IoIosEye className="text-xl text-gray-700 cursor-pointer" onClick={() => setShowBalance(!showBalance)} />
           <img src={RpIcon} alt="Rp" className="w-5 h-5" />
         </div>
       </div>
 
-      {/* Pilihan Bulan */}
-      <div className="mx-6 mb-4">
-        <label className="mr-2 font-medium text-sm text-gray-700">Pilih Bulan:</label>
-        <DatePicker
-          selected={
-            selectedMonth
-              ? new Date(selectedMonth.year, selectedMonth.month)
-              : null
-          }
-          onChange={(date) => {
-            setSelectedMonth({
-              month: date.getMonth(),
-              year: date.getFullYear(),
-            });
-          }}
-          dateFormat="MM/yyyy"
-          showMonthYearPicker
-          className="w-40 px-4 py-2 rounded-full border border-gray-300 shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
+      {/* Pilihan Bulan & Kategori Kebiasaan */}
+      <div className="mx-6 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <label className="mr-2 font-medium text-sm text-gray-700">Pilih Bulan:</label>
+          <DatePicker
+            selected={selectedMonth ? new Date(selectedMonth.year, selectedMonth.month) : null}
+            onChange={(date) => setSelectedMonth({ month: date.getMonth(), year: date.getFullYear() })}
+            dateFormat="MM/yyyy"
+            showMonthYearPicker
+            className="w-40 px-4 py-2 rounded-full border border-gray-300 shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+        </div>
+
+        {/* Kategori Kebiasaan */}
+        <div
+          className={`text-sm font-bold px-4 py-2 rounded-full text-center min-w-[90px] ${
+            kategoriKebiasaan === "hemat"
+              ? "bg-green-200 text-green-700"
+              : kategoriKebiasaan === "boros"
+              ? "bg-red-200 text-red-700"
+              : kategoriKebiasaan === "normal"
+              ? "bg-white text-gray-800 border border-gray-300"
+              : "bg-gray-200 text-gray-800"
+          }`}
+        >
+          {kategoriKebiasaan
+            ? kategoriKebiasaan.charAt(0).toUpperCase() + kategoriKebiasaan.slice(1)
+            : "-"}
+        </div>
       </div>
 
       {/* Ringkasan Bulanan */}
@@ -199,16 +236,12 @@ const Beranda = () => {
         <div className="flex-1 bg-white rounded-2xl p-4 shadow-md text-center">
           <img src={PengeluaranIcon} alt="Pengeluaran" className="w-20 h-20 mx-auto mb-2 object-contain" />
           <div className="text-sm text-gray-700 font-medium">Pengeluaran {periode}</div>
-          <div className="text-red-600 font-bold text-lg">
-            {totalPengeluaranTerbaru.toLocaleString("id-ID")}
-          </div>
+          <div className="text-red-600 font-bold text-lg">{totalPengeluaranTerbaru.toLocaleString("id-ID")}</div>
         </div>
         <div className="flex-1 bg-white rounded-2xl p-4 shadow-md text-center">
           <img src={PemasukanIcon} alt="Pemasukan" className="w-20 h-20 mx-auto mb-2 object-contain" />
           <div className="text-sm text-gray-700 font-medium">Pemasukan {periode}</div>
-          <div className="text-green-600 font-bold text-lg">
-            {totalPemasukanTerbaru.toLocaleString("id-ID")}
-          </div>
+          <div className="text-green-600 font-bold text-lg">{totalPemasukanTerbaru.toLocaleString("id-ID")}</div>
         </div>
       </div>
 
