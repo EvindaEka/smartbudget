@@ -194,6 +194,7 @@ def predict_with_history(category: str, user_id: int = None, db: Session = None)
 
     except Exception as e:
         traceback.print_exc()
+<<<<<<< HEAD
         return {
             "data_aktual": [],
             "prediksi_bulan_berikutnya": {
@@ -279,3 +280,6 @@ def retrain_semua_kategori(db: Session, user_id: int):
             hasil.append({"kategori": kategori, "status": "failed", "message": str(e)})
     
     return hasil
+=======
+        raise RuntimeError(f"Gagal mengambil data historis + prediksi: {str(e)}")
+>>>>>>> f78b2a3a1c2014ac0def4574f40d439f4b73b0c9

@@ -72,7 +72,7 @@ const Setting = () => {
           <div>
             <h2 className="text-base font-bold text-center mb-2">SmartBudget</h2>
             <h3 className="text-sm font-semibold text-center mb-4">
-              Web Perencanaan Keuangan Mahasiswa dengan Prediksi Pengeluaran
+              Sistem Pencatatan Keuangan Mahasiswa dengan Prediksi Pengeluaran Menggunakan Metode Machine Learning
             </h3>
             <p>
               SmartBudget adalah aplikasi web yang dirancang untuk membantu mahasiswa mengelola keuangan mereka
