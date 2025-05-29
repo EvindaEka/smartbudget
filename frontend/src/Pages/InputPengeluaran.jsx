@@ -119,10 +119,11 @@ export default function InputPengeluaran() {
         >
           <option value="" disabled>Pilih Kategori Pengeluaran</option>
           <option value="Makanan dan Minuman">Makanan dan Minuman</option>
-          <option value="Sewa Kos">Sewa Kos</option>
+          <option value="Kos">Kos</option>
           <option value="Transportasi">Transportasi</option>
           <option value="Kebutuhan Akademik">Kebutuhan Akademik</option>
           <option value="Paket Internet">Paket Internet</option>
+          <option value="Kesehatan">Kesehatan</option>
           <option value="Lainnya">Lainnya</option>
         </select>
 
