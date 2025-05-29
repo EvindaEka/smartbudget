@@ -400,7 +400,6 @@ export default function Dashboard() {
   )}
 </div>
 
-
       {/* Grafik Kos & Internet */}
       <div>
         <p className="font-semibold mb-4 text-lg text-center">

@@ -1,0 +1,15 @@
+artifact_uri: file:///d:/SEMESTER%204/TEKNOLOGI%20WEB%20SERVICE/PBL/Models/mlflow/mlruns/492544633980741856/fab4c3c071084ad7b6c594b658daec5a/artifacts
+end_time: 1748436491418
+entry_point_name: ''
+experiment_id: '492544633980741856'
+lifecycle_stage: active
+run_id: fab4c3c071084ad7b6c594b658daec5a
+run_name: KMeans_k=3
+run_uuid: fab4c3c071084ad7b6c594b658daec5a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1748436480408
+status: 3
+tags: []
+user_id: LENOVO

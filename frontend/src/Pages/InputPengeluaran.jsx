@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-// Animasi transisi framer-motion
 const pageVariants = {
   initial: { opacity: 0, y: -50 },
   in: { opacity: 1, y: 0 },
@@ -72,8 +71,15 @@ export default function InputPengeluaran() {
         throw new Error(errorData.detail || "Gagal menyimpan pengeluaran");
       }
 
-      const result = await response.json();
-      toast.success("Pengeluaran berhasil disimpan!");
+      // 🔁 Panggil endpoint retraining model
+      await fetch("http://localhost:8000/model/retrain", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      toast.success("Pengeluaran berhasil disimpan dan model diperbarui!");
       navigate("/beranda");
     } catch (error) {
       toast.error(error.message || "Terjadi kesalahan saat menyimpan data");
@@ -148,7 +154,7 @@ export default function InputPengeluaran() {
 
         <button
           onClick={handleAddTransaction}
-          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
+          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300"
         >
           Simpan
         </button>

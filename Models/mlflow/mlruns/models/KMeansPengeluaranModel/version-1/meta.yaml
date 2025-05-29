@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1748436491359
+current_stage: None
+description: null
+last_updated_timestamp: 1748436491359
+name: KMeansPengeluaranModel
+run_id: fab4c3c071084ad7b6c594b658daec5a
+run_link: null
+source: file:///d:/SEMESTER%204/TEKNOLOGI%20WEB%20SERVICE/PBL/Models/mlflow/mlruns/492544633980741856/fab4c3c071084ad7b6c594b658daec5a/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///d:/SEMESTER%204/TEKNOLOGI%20WEB%20SERVICE/PBL/Models/mlflow/mlruns/492544633980741856/fab4c3c071084ad7b6c594b658daec5a/artifacts/model
+user_id: null
+version: 1

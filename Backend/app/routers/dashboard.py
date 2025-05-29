@@ -6,6 +6,7 @@ from app.models.user import User
 from app.database import get_db
 from app.models.pemasukan import Pemasukan
 from app.models.pengeluaran import Pengeluaran
+from app.utils.prediksi import retrain_model_from_db, retrain_semua_kategori
 from app.utils.prediksi import (
     KategoriPengeluaran,
     predict_next_month,
@@ -79,7 +80,7 @@ def prediksi_pengeluaran(
         )
 
     try:
-        hasil_prediksi = predict_next_month(kategori.value)
+        hasil_prediksi = predict_next_month(kategori.value, user_id)
         return {
             "kategori": kategori_str,
             "prediksi_bulan_berikutnya": hasil_prediksi
@@ -90,10 +91,12 @@ def prediksi_pengeluaran(
 @router.get("/prediksi-pengeluaran-history")
 def prediksi_pengeluaran_history(
     kategori: KategoriPengeluaran,
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ):
     try:
-        hasil = predict_with_history(kategori.value)
+        user_id = current_user.id_user
+        hasil = predict_with_history(kategori.value, user_id=user_id, db=db)
         return {
             "kategori": kategori.value,
             **hasil
@@ -103,16 +106,17 @@ def prediksi_pengeluaran_history(
 
 @router.get("/prediksi-pengeluaran-total")
 def prediksi_pengeluaran_total(
+    db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
     try:
-        hasil = predict_with_history("Semua")
+        hasil = predict_with_history("Semua", user_id=current_user.id_user, db=db)
         return {
             "kategori": "Total",
             **hasil
         }
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"Gagal prediksi total: {str(e)}")
 
 @router.get("/total")
 def get_total_pengeluaran(
@@ -122,3 +126,26 @@ def get_total_pengeluaran(
     total = db.query(func.sum(Pengeluaran.jumlah))\
         .filter(Pengeluaran.id_user == current_user.id_user).scalar() or 0
     return {"id_user": current_user.id_user, "total": total}
+
+@router.post("/retrain")
+def retrain_model_endpoint(
+    kategori: KategoriPengeluaran,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    try:
+        pesan = retrain_model_from_db(kategori.value, db, current_user.id_user)
+        return {"status": "success", "message": pesan}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Gagal retrain model: {str(e)}")
+
+@router.post("/retrain-semua")
+def retrain_semua_model_endpoint(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    try:
+        hasil = retrain_semua_kategori(db, current_user.id_user)
+        return {"status": "selesai", "hasil": hasil}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Gagal retrain semua model: {str(e)}")
