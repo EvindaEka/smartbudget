@@ -194,7 +194,6 @@ def predict_with_history(category: str, user_id: int = None, db: Session = None)
 
     except Exception as e:
         traceback.print_exc()
-<<<<<<< HEAD
         return {
             "data_aktual": [],
             "prediksi_bulan_berikutnya": {
@@ -252,7 +251,11 @@ def retrain_model_from_db(kategori: str, db: Session, user_id: int):
 
     # Simpan model per user dan kategori
     os.makedirs(MODEL_DIR, exist_ok=True)
-    safe_kategori = kategori.lower().replace(' ', '_')
+    if kategori == "Semua":
+        safe_kategori = "model_arima"
+    else:
+        safe_kategori = kategori.lower().replace(' ', '_')
+
     filename = f"{safe_kategori}_user_{user_id}.pkl"
     model_path = os.path.join(MODEL_DIR, filename)
 
@@ -280,6 +283,3 @@ def retrain_semua_kategori(db: Session, user_id: int):
             hasil.append({"kategori": kategori, "status": "failed", "message": str(e)})
     
     return hasil
-=======
-        raise RuntimeError(f"Gagal mengambil data historis + prediksi: {str(e)}")
->>>>>>> f78b2a3a1c2014ac0def4574f40d439f4b73b0c9

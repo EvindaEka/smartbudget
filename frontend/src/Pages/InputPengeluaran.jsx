@@ -139,7 +139,7 @@ export default function InputPengeluaran() {
           placeholder="Jumlah Pengeluaran"
           value={formData.amount}
           onChange={handleInputChange}
-          className={`w-full mb-5 p-4 border rounded text-lg ${!formData.amount ? "border-red-500" : ""}`}
+          className="w-full mb-5 p-4 border rounded text-lg"
           inputMode="numeric"
         />
 
@@ -155,7 +155,7 @@ export default function InputPengeluaran() {
 
         <button
           onClick={handleAddTransaction}
-          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300"
+          className="w-full py-4 bg-[#282f66] text-white font-bold rounded-md hover:bg-[#1f254d] transition-colors duration-300 !text-white !bg-[#282f66] !opacity-100"
         >
           Simpan
         </button>

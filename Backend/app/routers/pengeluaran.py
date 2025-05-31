@@ -9,7 +9,7 @@ from app.schemas.pengeluaran import PengeluaranCreate, PengeluaranOut
 from app.models.user import User
 from app.utils.auth import get_current_user
 from app.utils.deps import get_db
-from app.utils.prediksi import retrain_semua_kategori 
+from app.utils.prediksi import retrain_model_from_db
 
 router = APIRouter(prefix="/pengeluaran", tags=["pengeluaran"])
 
@@ -38,9 +38,9 @@ def create_pengeluaran(
 
     # Retrain model setelah ada pengeluaran baru
     try:
-        retrain_semua_kategori(db=db, user_id=current_user.id_user)
+        retrain_model_from_db(data.kategori, db=db, user_id=current_user.id_user)
     except Exception as e:
-        print(f"[WARNING] Gagal retrain model: {e}")
+        print(f"[WARNING] Gagal retrain model untuk kategori {data.kategori}: {e}")
 
     return pengeluaran
 
