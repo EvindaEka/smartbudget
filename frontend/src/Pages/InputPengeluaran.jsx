@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import IconPengeluaran from "../assets/Pengeluaran icon inputan.png";
-import koin from "../assets/koin.png";
+import koin from "../assets/Koin.png";
 import ProfilIcon from "../assets/Profil_1.png";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
